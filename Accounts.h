@@ -1,0 +1,14 @@
+//
+// Created by tarek on 5/9/2024.
+//
+
+#ifndef CUSTOMIZED_NEWS_FEED_ALGORITHM_ACCOUNTS_H
+#define CUSTOMIZED_NEWS_FEED_ALGORITHM_ACCOUNTS_H
+
+
+class Accounts {
+
+};
+
+
+#endif //CUSTOMIZED_NEWS_FEED_ALGORITHM_ACCOUNTS_H

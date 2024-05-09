@@ -21,6 +21,10 @@ add_executable(
         BinarySearchTree.h
         MaxHeap.h
         ArticleUtils.h
+        Date.h
+        Date.cpp
+        Accounts.h
+        Accounts.cpp
 )
 
 # Link external libraries to the executable
