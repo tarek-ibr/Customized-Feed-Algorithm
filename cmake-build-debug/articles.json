@@ -1,0 +1,26 @@
+[
+    {
+        "publicationDate": "2024-04-30",
+        "relevanceScore": 0.8,
+        "source": "Source A",
+        "title": "News One"
+    },
+    {
+        "publicationDate": "2024-04-29",
+        "relevanceScore": 0.6,
+        "source": "Source B",
+        "title": "News Two"
+    },
+    {
+        "publicationDate": "2024-04-28",
+        "relevanceScore": 0.9,
+        "source": "Source C",
+        "title": "News Three"
+    },
+    {
+        "publicationDate": "2024-04-30",
+        "relevanceScore": 0.3,
+        "source": "Source B",
+        "title": "News Four"
+    }
+]

@@ -2,6 +2,7 @@
 #include "Article.h"
 #include "BinarySearchTree.h"
 #include "MaxHeap.h"
+#include "ArticleUtils.h"  // Include ArticleUtils.h for JSON, search, and filter functions
 
 void printArticle(const Article& article) {
     std::cout << "Title: " << article.title
@@ -11,25 +12,42 @@ void printArticle(const Article& article) {
 }
 
 int main() {
-    // Create some articles
-    Article a1("News One", "Source A", "2024-04-30", 0.8);
-    Article a2("News Two", "Source B", "2024-04-29", 0.6);
-    Article a3("News Three", "Source C", "2024-04-28", 0.9);
+    std::vector<Article> articles;
 
-    // Insert into a binary search tree
+    // Load articles from a JSON file
+    std::string filename = "articles.json";
+    articles = loadFromJSON(filename);
+
+    // Demonstrate search functionality
+    std::cout << "\nSearching for 'News One':" << std::endl;
+    try {
+        Article found = searchByTitle(articles, "News One");
+        printArticle(found);
+    } catch (const std::runtime_error& e) {
+        std::cout << "Error: " << e.what() << std::endl;
+    }
+
+    // Demonstrate filter functionality
+    std::cout << "\nFiltering by source 'Source B':" << std::endl;
+    auto filtered = filterBySource(articles, "Source B");
+    for (const auto& article : filtered) {
+        printArticle(article);
+    }
+
+    // Insert into a binary search tree (sorted by date)
     BinarySearchTree<Article> bst;
-    bst.insert(a1);
-    bst.insert(a2);
-    bst.insert(a3);
+    for (const auto& article : articles) {
+        bst.insert(article);
+    }
 
-    std::cout << "Articles in BST (sorted by date):" << std::endl;
+    std::cout << "\nArticles in BST (sorted by date):" << std::endl;
     bst.inOrderTraversal(printArticle);
 
-    // Insert into a max-heap for relevance
+    // Insert into a max-heap (prioritized by relevance)
     MaxHeap<Article> heap;
-    heap.insert(a1);
-    heap.insert(a2);
-    heap.insert(a3);
+    for (const auto& article : articles) {
+        heap.insert(article);
+    }
 
     std::cout << "\nArticles in Max-Heap (prioritized by relevance):" << std::endl;
     while (!heap.isEmpty()) {
