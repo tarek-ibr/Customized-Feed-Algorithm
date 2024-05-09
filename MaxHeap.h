@@ -1,66 +1,40 @@
 #ifndef MAX_HEAP_H
 #define MAX_HEAP_H
 
+#include <iostream>
 #include <vector>
 #include <algorithm>
-#include <stdexcept> // Include this for std::out_of_range
+#include <stdexcept> // Include this for out_of_range
+
+using namespace std;
 
 template<typename T>
 class MaxHeap {
 private:
-    std::vector<T> heap;
-
-    void heapifyDown(size_t index) {
-        size_t left = 2 * index + 1;
-        size_t right = 2 * index + 2;
-        size_t largest = index;
-
-        if (left < heap.size() && heap[left] > heap[largest]) {
-            largest = left;
-        }
-
-        if (right < heap.size() && heap[right] > heap[largest]) {
-            largest = right;
-        }
-
-        if (largest != index) {
-            std::swap(heap[index], heap[largest]);
-            heapifyDown(largest);
-        }
-    }
-
-    void heapifyUp(size_t index) {
-        if (index == 0) return;
-        size_t parent = (index - 1) / 2;
-
-        if (heap[index] > heap[parent]) {
-            std::swap(heap[index], heap[parent]);
-            heapifyUp(parent);
-        }
-    }
-
+    vector<T> heap;
+    int size;
 public:
-    void insert(const T& value) {
-        heap.push_back(value);
-        heapifyUp(heap.size() - 1);
-    }
+    MaxHeap(vector<T>);
 
-    T extractMax() {
-        if (heap.empty()) {
-            throw std::out_of_range("Heap is empty");
-        }
+    int parent(int);
+    int left_child(int x);
+    int right_child(int x);
+    void swap(T &x, T &y);
 
-        T max = heap[0];
-        heap[0] = heap.back();
-        heap.pop_back();
-        heapifyDown(0);
+    void heapifyup(vector<T> & arr, int index);
+    void heapifydown(vector<T> & arr, int index);
+    void insert(vector<T> &arr, int value);
+    T extract_max(vector<T> & arr);           //to remove later i we dont use it
+    bool is_a_max_heap(vector<T> & arr);                 //to remove later i we dont use it
+    int min_maxheap(vector<T> & arr);
+    int peaktop(vector<T> & arr);
+    bool isEmpty() const;
+    int build_heap(vector<T> & arr);
 
-        return max;
-    }
-
-    bool isEmpty() const {
-        return heap.empty();
-    }
+    void heap_sort(vector<T> & arr);
 };
+
+
+
 
 #endif // MAX_HEAP_H

@@ -17,14 +17,19 @@ FetchContent_MakeAvailable(json)  # Make the dependency available
 add_executable(
         Customized_News_Feed_Algorithm  # Executable name
         main.cpp  # Source files
-        Article.h
         BinarySearchTree.h
         MaxHeap.h
-        ArticleUtils.h
         Date.h
         Date.cpp
         Accounts.h
         Accounts.cpp
+        Users.cpp
+        Admins.cpp
+        MaxHeap.cpp
+        Article.cpp
+        BinarySearchTree.cpp
+        singleLinkedList.h
+        singleLinkedList.cpp
 )
 
 # Link external libraries to the executable

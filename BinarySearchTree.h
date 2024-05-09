@@ -8,45 +8,33 @@
 #include <iostream>
 #include <memory>
 
+using namespace std;
+
+template<typename T>                        //all the file is to be removed if we don't use it
+class Node {
+    T data;
+    Node* left;
+    Node* right;
+public:
+    Node(const T& d);
+    Node(const T& d, Node*, Node*);
+
+};
+
 template<typename T>
 class BinarySearchTree {
 private:
-    struct Node {
-        T data;
-        std::unique_ptr<Node> left;
-        std::unique_ptr<Node> right;
+    unique_ptr<Node<T>> root;
 
-        Node(const T& d) : data(d) {}
-    };
-
-    std::unique_ptr<Node> root;
-
-    void insert(std::unique_ptr<Node>& node, const T& value) {
-        if (!node) {
-            node = std::make_unique<Node>(value); // Create a new node with the given value
-        } else if (value < node->data) {
-            insert(node->left, value); // Recursive insert on the left
-        } else {
-            insert(node->right, value); // Recursive insert on the right
-        }
-    }
+    void insert(unique_ptr<Node<T>>& node, const T& value);
 
 
-    void inOrder(Node* node, void (*process)(const T&)) {
-        if (!node) return;
-        inOrder(node->left.get(), process);
-        process(node->data);
-        inOrder(node->right.get(), process);
-    }
-
+    void inOrder(Node<T>* node, void (*process)(const T&));
 public:
-    void insert(const T& value) {
-        insert(root, value); // Root-level insert with the given value
-    }
 
-    void inOrderTraversal(void (*process)(const T&)) {
-        inOrder(root.get(), process);
-    }
+    void insert(const T& value);
+
+    void inOrderTraversal(void (*process)(const T&));
 };
 
 

@@ -1,44 +1,10 @@
 [
     {
-        "publicationDate": "2024-04-30",
-        "relevanceScore": 0.8,
-        "source": "Source A",
-        "title": "News One"
-    },
-    {
-        "publicationDate": "2024-04-29",
-        "relevanceScore": 0.6,
-        "source": "Source B",
-        "title": "News Two"
-    },
-    {
-        "publicationDate": "2024-04-28",
-        "relevanceScore": 0.9,
-        "source": "Source C",
-        "title": "News Three"
-    },
-    {
-        "publicationDate": "2024-04-30",
-        "relevanceScore": 0.3,
-        "source": "Source B",
-        "title": "News Four"
-    },
-    {
-        "publicationDate": "2024-05-01",
-        "relevanceScore": 0.7,
-        "source": "Source X",
-        "title": "Test Article 1"
-    },
-    {
-        "publicationDate": "2024-05-02",
-        "relevanceScore": 0.9,
-        "source": "Source Y",
-        "title": "Test Article 2"
-    },
-    {
-        "publicationDate": "2024-05-03",
-        "relevanceScore": 0.6,
-        "source": "Source Z",
-        "title": "Test Article 3"
+        "title": "el gdeeed",
+        "content": "el gdeeeed shdeeed",
+        "category": "habl",
+        "source": "tarek company",
+        "author": "tarek",
+        "publicationDate": "05/09,2024"
     }
 ]

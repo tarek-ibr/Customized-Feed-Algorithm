@@ -1,29 +1,61 @@
 //
-// Created by AhmedElbehiry on 5/9/2024.
+// Created by tarek on 5/9/2024.
 //
 
 #ifndef CUSTOMIZED_NEWS_FEED_ALGORITHM_ARTICLE_H
 #define CUSTOMIZED_NEWS_FEED_ALGORITHM_ARTICLE_H
 
 #include <string>
+#include <vector>
+#include "Date.h"
+#include <nlohmann/json.hpp>
+#include <fstream>
+#include <stdexcept>
+#include "singleLinkedList.h"
+
+using namespace std;
 
 class Article {
+private:
+    string title;
+    string content;
+    string category;
+    string source;
+    string author;
+    Date publicationDate;
+
+    static singleLinkedList<Article> articles;
+
 public:
-    std::string title;
-    std::string source;
-    std::string publicationDate;
-    double relevanceScore;
 
-    Article(const std::string& t, const std::string& s, const std::string& pd, double rs)
-            : title(t), source(s), publicationDate(pd), relevanceScore(rs) {}
+    Article(const string& title, const string& content, const string& category, const string& source, const string& author, Date publicationDate);
 
-    bool operator<(const Article& other) const {
-        return publicationDate < other.publicationDate;
-    }
 
-    bool operator>(const Article& other) const {
-        return relevanceScore > other.relevanceScore;
-    }
+    string getTitle() const;
+    string getContent() const;
+    string getCategory() const;
+    string getSource() const;
+    string getAuthor() const;
+    Date getPublicationDate() const;
+    static singleLinkedList<Article>& getArticles();
+
+    void setTitle(const string& title);
+    void setContent(const string& content);
+    void setCategory(const string& category);
+    void setSource(const string& source);
+    void setAuthor(const string& author);
+    void setPublicationDate(const Date& publicationDate);
+    
+    
+
+    Article searchByTitle(const vector<Article>& articles, const string& title);
+    vector<Article> filterBySource(const vector<Article>& articles, const string& source);
+
+    static bool saveArticles();
+    static bool loadArticles();
+
 };
+
+
 
 #endif //CUSTOMIZED_NEWS_FEED_ALGORITHM_ARTICLE_H
