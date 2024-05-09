@@ -7,20 +7,30 @@
 #include <vector>
 #include <stdexcept>  // For std::runtime_error
 
-void saveToJSON(const std::vector<Article>& articles, const std::string& filename) {
-    nlohmann::json jsonArray = nlohmann::json::array();
+void saveToJSON(const std::vector<Article>& newArticles, const std::string& filename) {
+    nlohmann::json jsonArray;
 
-    for (const auto& article : articles) {
+    // Check if the file exists
+    std::ifstream infile(filename);
+    if (infile.good()) {  // If the file exists, read its content
+        infile >> jsonArray;  // Load existing data
+    } else {
+        jsonArray = nlohmann::json::array();  // Initialize an empty array if the file doesn't exist
+    }
+
+    // Add new articles to the existing JSON array
+    for (const auto& article : newArticles) {
         nlohmann::json jsonObj;
         jsonObj["title"] = article.title;
         jsonObj["source"] = article.source;
         jsonObj["publicationDate"] = article.publicationDate;
         jsonObj["relevanceScore"] = article.relevanceScore;
-        jsonArray.push_back(jsonObj);
+        jsonArray.push_back(jsonObj);  // Append the new article to the JSON array
     }
 
-    std::ofstream file(filename);
-    file << jsonArray.dump(4);  // Pretty print with 4 spaces
+    // Save the updated data to the JSON file
+    std::ofstream outfile(filename);  // Open the file for writing
+    outfile << jsonArray.dump(4);  // Write the updated JSON data, pretty-printed with 4 spaces
 }
 
 std::vector<Article> loadFromJSON(const std::string& filename) {

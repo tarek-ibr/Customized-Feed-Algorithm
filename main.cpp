@@ -55,5 +55,15 @@ int main() {
         printArticle(max);
     }
 
+    std::vector<Article> articlesTest = {
+            Article("Test Article 1", "Source X", "2024-05-01", 0.7),
+            Article("Test Article 2", "Source Y", "2024-05-02", 0.9),
+            Article("Test Article 3", "Source Z", "2024-05-03", 0.6)
+    };
+
+    // Save to JSON
+    std::string filenameTest = "test_articles.json";
+    saveToJSON(articlesTest, filename);
+
     return 0;
 }

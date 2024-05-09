@@ -22,5 +22,23 @@
         "relevanceScore": 0.3,
         "source": "Source B",
         "title": "News Four"
+    },
+    {
+        "publicationDate": "2024-05-01",
+        "relevanceScore": 0.7,
+        "source": "Source X",
+        "title": "Test Article 1"
+    },
+    {
+        "publicationDate": "2024-05-02",
+        "relevanceScore": 0.9,
+        "source": "Source Y",
+        "title": "Test Article 2"
+    },
+    {
+        "publicationDate": "2024-05-03",
+        "relevanceScore": 0.6,
+        "source": "Source Z",
+        "title": "Test Article 3"
     }
 ]
