@@ -5,7 +5,9 @@
 #include "Accounts.h"
 #include "Article.h"
 
-singleLinkedList<Users> Users::users = singleLinkedList<Users>();
+customVector<Users> Users::users = customVector<Users>();
+
+Users::Users() : Accounts(){}
 
 Users::Users(string u, string pass, string pref) : Accounts(u, pass), prefrence(pref){}
 
@@ -18,7 +20,7 @@ string Users::getPrefrence() {
     return prefrence;
 }
 
-singleLinkedList<Users> &Users::getUsers() {
+customVector<Users> &Users::getUsers() {
     return users;
 }
 
@@ -34,11 +36,11 @@ bool Users::saveUsers() {
 
 
     // Add new articles to the existing JSON array
-    for (sllnode<Users>* temp=users.getHead(); temp!=nullptr; temp=temp->next) {
+    for (size_t i=0;i<users.size();i++) {
         nlohmann::json jsonObj;
-        jsonObj["username"] = temp->info.username;
-        jsonObj["password"] = temp->info.password;
-        jsonObj["prefrence"] = temp->info.prefrence;
+        jsonObj["username"] = users[i].username;
+        jsonObj["password"] = users[i].password;
+        jsonObj["prefrence"] = users[i].prefrence;
 
         output.push_back(jsonObj);  // Append the new article to the JSON array
     }
@@ -67,7 +69,7 @@ bool Users::loadUsers() {
         string password = jsonObj["password"];
         string prefrence = jsonObj["prefrence"];
 
-        users.addToTail(Users(username, password, prefrence));
+        users.push(Users(username, password, prefrence));
     }
     file.close();
 

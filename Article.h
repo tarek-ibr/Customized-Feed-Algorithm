@@ -6,18 +6,15 @@
 #define CUSTOMIZED_NEWS_FEED_ALGORITHM_ARTICLE_H
 
 #include <string>
-#include <vector>
 #include "Date.h"
+#include "customVector.h"
 #include <nlohmann/json.hpp>
 #include <fstream>
 #include <stdexcept>
 
 using namespace std;
 
-template<typename T>
-class singleLinkedList;
-template<typename T>
-class sllnode;
+
 
 class Article {
 private:
@@ -28,7 +25,7 @@ private:
     string author;
     Date publicationDate;
 
-    static singleLinkedList<Article> articles;
+    static customVector<Article> articles;
 
 public:
     Article();
@@ -41,7 +38,7 @@ public:
     string getSource() const;
     string getAuthor() const;
     Date getPublicationDate() const;
-    static singleLinkedList<Article>& getArticles();
+    static customVector<Article>& getArticles();
 
     void setTitle(const string& title);
     void setContent(const string& content);
@@ -61,40 +58,6 @@ public:
     static bool saveArticles();
     static bool loadArticles();
 
-};
-
-
-
-template<typename T>
-class sllnode{
-public:
-    T info;
-    sllnode* next;
-
-    sllnode();
-    sllnode(T);
-    sllnode(T, sllnode*);
-};
-
-template<typename T>
-class singleLinkedList {
-    sllnode<T>* head, * tail;
-public:
-    singleLinkedList();
-
-    sllnode<T>* getHead();
-    sllnode<T>* getTail();
-
-    bool isEmpty();
-    void addToHead(T el);
-    void addToTail(T el);
-    T deleteFromHead();
-    T deleteFromTail();
-    void deletenode(T el);
-    bool isInList(T el) const;
-    void clear();
-
-    ~singleLinkedList();
 };
 
 

@@ -6,6 +6,7 @@
 #define CUSTOMIZED_NEWS_FEED_ALGORITHM_CUSTOMVECTOR_H
 
 
+
 #include <iostream>
 
 
@@ -25,6 +26,7 @@ public:
     void push(T data);
     void insert(size_t index, T data);
     void erase(size_t index);
+    void clear();
 
     T& operator[](size_t index);
     const T& operator[](size_t index) const;
@@ -33,6 +35,8 @@ public:
     bool empty() const;
     void print() const;
 };
+
+
 
 // Constructor
 template <typename T>
@@ -117,6 +121,15 @@ void customVector<T>::erase(size_t index) {
     --current;
 }
 
+template<typename T>
+void customVector<T>::clear() {
+    current = 0;
+    delete[] arr;
+    arr = new T[1];
+    capacity = 1;
+}
+
+
 // Operator[]
 template <typename T>
 T& customVector<T>::operator[](size_t index) {
@@ -154,6 +167,8 @@ void customVector<T>::print() const {
     }
     std::cout << '\n';
 }
+
+
 
 
 

@@ -4,6 +4,8 @@
 
 #include "Accounts.h"
 
+Accounts::Accounts() : username(""), password(""){}
+
 Accounts::Accounts(string u, string p) : username(u), password(p){}
 
 void Accounts::setusername(string u) {

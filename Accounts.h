@@ -11,11 +11,13 @@
 
 using namespace std;
 
+
 class Accounts {
 protected:
     string username;
     string password;
 public:
+    Accounts();
     Accounts(string, string);
     void setusername(string);
     void setpassword(string);
@@ -29,11 +31,12 @@ public:
 
 class Admins : public Accounts{
 private:
-    static singleLinkedList<Admins> admins;
+    static customVector<Admins> admins;
 public:
+    Admins();
     Admins(string, string);
 
-    static singleLinkedList<Admins>& getAdmins();
+    static customVector<Admins>& getAdmins();
 
     void addArticle(Article);
 
@@ -45,13 +48,14 @@ public:
 class Users : public Accounts{
 private:
     string prefrence;
-    static singleLinkedList<Users> users;
+    static customVector<Users> users;
 public:
+    Users();
     Users(string, string, string);
     void setPrefrence(string);
 
     string getPrefrence();
-    static singleLinkedList<Users>& getUsers();
+    static customVector<Users>& getUsers();
 
 
 

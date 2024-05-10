@@ -5,18 +5,20 @@
 #include "Article.h"
 
 
-singleLinkedList<Admins> Admins::admins = singleLinkedList<Admins>();
+customVector<Admins> Admins::admins = customVector<Admins>();
+
+Admins::Admins() : Accounts(){}
 
 Admins::Admins(string u, string p) : Accounts(u, p){}
 
-singleLinkedList<Admins> &Admins::getAdmins() {
+customVector<Admins> &Admins::getAdmins() {
     return admins;
 }
 
 
 void Admins::addArticle(Article a) {
-    singleLinkedList<Article>& articles = Article::getArticles();
-    articles.addToTail(a);
+    customVector<Article>& articles = Article::getArticles();
+    articles.push(a);
 }
 
 bool Admins::saveAdmins() {
@@ -31,10 +33,10 @@ bool Admins::saveAdmins() {
 
 
     // Add new articles to the existing JSON array
-    for (sllnode<Admins>* temp=admins.getHead(); temp!=nullptr; temp=temp->next) {
+    for (size_t i=0;i<admins.size();i++) {
         nlohmann::json jsonObj;
-        jsonObj["username"] = temp->info.username;
-        jsonObj["password"] = temp->info.password;
+        jsonObj["username"] = admins[i].username;
+        jsonObj["password"] = admins[i].password;
 
         output.push_back(jsonObj);  // Append the new article to the JSON array
     }
@@ -62,7 +64,7 @@ bool Admins::loadAdmin() {
         string username = jsonObj["username"];
         string password = jsonObj["password"];
 
-        admins.addToTail(Admins(username, password));
+        admins.push(Admins(username, password));
     }
     file.close();
 
