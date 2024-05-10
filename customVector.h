@@ -7,7 +7,7 @@
 
 
 #include <iostream>
-#include <algorithm>
+
 
 template <typename T>
 class customVector {
@@ -47,7 +47,7 @@ customVector<T>::customVector(const customVector& v)
     }
 }
 
-// Will be edited later to just copy not swap
+
 template <typename T>
 customVector<T>& customVector<T>::operator=(const customVector& v) {
     if (this != &v) {
