@@ -1,22 +1,18 @@
 #include <iostream>
-#include "Accounts.h"
 #include "Article.h"
-#include "Date.h"
-#include "MaxHeap.h"
-#include "singleLinkedList.h"
-
 
 
 int main() {
 
     Article::loadArticles();
 
-    singleLinkedList<Article> s1 = Article::getArticles();
+    singleLinkedList s1 = Article::getArticles();
 
-    sllnode<Article>* s2 = s1.getHead();
-    cout<<s2->info.getTitle();
+    sllnode* s2 = s1.getHead();
+    cout<<s2->info.getTitle()<<endl;
+    //s2->info.setAuthor("eljooker");
 
-    Article::saveArticles();
+    cout <<Article::saveArticles()<<endl;
 
     system("pause");
 

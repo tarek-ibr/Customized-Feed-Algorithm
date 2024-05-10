@@ -28,8 +28,6 @@ add_executable(
         MaxHeap.cpp
         Article.cpp
         BinarySearchTree.cpp
-        singleLinkedList.h
-        singleLinkedList.cpp
 )
 
 # Link external libraries to the executable

@@ -1,10 +1,10 @@
 [
     {
-        "title": "el gdeeed",
-        "content": "el gdeeeed shdeeed",
-        "category": "habl",
-        "source": "tarek company",
         "author": "tarek",
-        "publicationDate": "05/09,2024"
+        "category": "habl",
+        "content": "el gdeeeed shdeeed",
+        "publicationDate": "05/09/2024",
+        "source": "tarek company",
+        "title": "el gdeeed"
     }
 ]

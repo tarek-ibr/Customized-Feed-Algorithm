@@ -4,8 +4,9 @@
 
 #include "Article.h"
 
-singleLinkedList<Article> Article::articles=singleLinkedList<Article>();
+singleLinkedList Article::articles=singleLinkedList();
 
+Article::Article(): title(""), content(""), category(""), source(""), author(""), publicationDate(0,0,0) {}
 Article::Article(const string& title, const string& content, const string& category, const string& source, const string& author, Date publicationDate): title(title), content(content), category(category), source(source), author(author), publicationDate(publicationDate) {}
 
 string Article::getTitle() const { return title; }
@@ -14,14 +15,14 @@ string Article::getCategory() const { return category; }
 string Article::getSource() const { return source; }
 string Article::getAuthor() const { return author; }
 Date Article::getPublicationDate() const { return publicationDate; }
-singleLinkedList<Article>& Article::getArticles(){return articles;}
+singleLinkedList& Article::getArticles(){return articles;}
 
-void Article::setTitle(const string& title) { this->title = title; }
-void Article::setContent(const string& content) { this->content = content; }
-void Article::setCategory(const string& category) { this->category = category; }
-void Article::setSource(const string& source) { this->source = source; }
-void Article::setAuthor(const string& author) { this->author = author; }
-void Article::setPublicationDate(const Date& publicationDate) { this->publicationDate = publicationDate; }
+void Article::setTitle(const string& t) { this->title = t; }
+void Article::setContent(const string& co) { this->content = co; }
+void Article::setCategory(const string& ca) { this->category = ca; }
+void Article::setSource(const string& s) { this->source = s; }
+void Article::setAuthor(const string& a) { this->author = a; }
+void Article::setPublicationDate(const Date& p) { this->publicationDate = p; }
 
 bool Article::saveArticles() {
     ofstream file("articles.json");
@@ -35,7 +36,7 @@ bool Article::saveArticles() {
 
 
     // Add new articles to the existing JSON array
-    for (sllnode<Article>* temp=articles.getHead(); temp!=NULL; temp=temp->next) {
+    for (sllnode* temp=articles.getHead(); temp!=nullptr; temp=temp->next) {
         nlohmann::json jsonObj;
         jsonObj["title"] = temp->info.title;
         jsonObj["content"] = temp->info.content;
@@ -48,6 +49,8 @@ bool Article::saveArticles() {
 
     file << setw(4) << output;
     file.close();
+
+    return true;
 }
 
 bool Article::loadArticles() {
@@ -78,10 +81,10 @@ bool Article::loadArticles() {
     return true;
 }
 
-Article Article::searchByTitle(const vector<Article>& articles, const string& title) {
-    for (const auto& article : articles) {
-        if (article.title == title) {
-            return article;
+Article Article::searchByTitle(singleLinkedList articles, const string& t) {
+    for (sllnode* temp=articles.getHead(); temp!=nullptr; temp=temp->next) {
+        if (temp->info.title == t) {
+            return temp->info;
         }
     }
     throw runtime_error("Article not found");
@@ -95,4 +98,147 @@ vector<Article> Article::filterBySource(const vector<Article>& articles, const s
         }
     }
     return filtered;
+}
+
+bool Article::operator ==(Article other){
+    if(this->getTitle() == other.getTitle()&&this->getAuthor() == other.getAuthor()&&this->getCategory() == other.getCategory()&&this->getContent() == other.getContent()&&this->getPublicationDate() == other.getPublicationDate()&&this->getSource() == other.getSource())
+        return true;
+    else
+        return false;
+}
+
+sllnode::sllnode(){
+    info=Article();
+    next =0;
+}
+
+sllnode::sllnode(Article i){
+    info=i;
+    next=0;
+}
+
+sllnode::sllnode(Article i, sllnode* n){
+    info=i;
+    next=n;
+}
+
+
+singleLinkedList::singleLinkedList(){
+    head=tail=0;
+}
+
+sllnode* singleLinkedList::getHead() {
+    return head;
+}
+
+sllnode* singleLinkedList::getTail() {
+    return tail;
+}
+
+bool singleLinkedList::isEmpty(){
+    return head==0;
+}
+
+void singleLinkedList::addToHead(Article el){
+    head=new sllnode(el, head);
+    if (tail==0)
+        tail=head;
+}
+
+void singleLinkedList::addToTail(Article el){
+    if (isEmpty())
+        head=tail=new sllnode(el);
+    else {
+        tail->next=new sllnode(el);
+        tail=tail->next;
+    }
+}
+
+Article singleLinkedList::deleteFromHead() {
+    if(!isEmpty()){
+        Article el=head->info;
+        if (head == tail){
+            delete head;
+            head=tail=0;
+        }
+        else{
+            sllnode* temp=head;
+            head=head->next;
+            delete temp;
+        }
+        return el;
+    }
+    else
+        cout<< "the list is empty";
+    return Article();
+}
+
+Article singleLinkedList::deleteFromTail(){
+    if(!isEmpty()){
+        Article el=tail->info;
+        if (head == tail){
+            delete tail;
+            head=tail=0;
+        }
+        else{
+            sllnode* temp;
+            for(temp=head;temp->next!=tail;temp=temp->next);
+            tail=temp;
+            temp=temp->next;
+            delete temp;
+            tail->next=0;
+        }
+        return el;
+    }
+    else
+        cout<< "the list is empty";
+    return Article();
+}
+
+void singleLinkedList::deletenode(Article el){
+    if(!isEmpty()){
+        if (head->info == el){
+            deleteFromHead();
+        }
+        else if(tail->info == el){
+            deleteFromHead();
+        }
+        else{
+            sllnode* temp,*temp2;
+            for(temp=head;(temp->next->info==el)&&temp->next!=tail;temp=temp->next);
+            temp2=temp->next;
+            if (temp2!=tail) {
+                temp->next = temp->next->next;
+                delete temp2;
+            }
+        }
+    }
+    else
+        cout<< "the list is empty";
+}
+
+bool singleLinkedList::isInList(Article el) const{
+    sllnode* temp;
+    for(temp=head;!(temp->info==el)&&temp!=tail;temp=temp->next);
+    return temp->info==el;
+}
+
+void singleLinkedList::clear() {
+    sllnode* p=head;
+    while (head!=0){
+        p=p->next;
+        delete head;
+        head=p;
+    }
+    head=tail=0;
+}
+
+singleLinkedList::~singleLinkedList(){
+    sllnode* p=head;
+    while (head!=0){
+        p=p->next;
+        delete head;
+        head=p;
+    }
+    head=tail=0;
 }

@@ -11,9 +11,10 @@
 #include <nlohmann/json.hpp>
 #include <fstream>
 #include <stdexcept>
-#include "singleLinkedList.h"
 
 using namespace std;
+
+class singleLinkedList;
 
 class Article {
 private:
@@ -24,10 +25,10 @@ private:
     string author;
     Date publicationDate;
 
-    static singleLinkedList<Article> articles;
+    static singleLinkedList articles;
 
 public:
-
+    Article();
     Article(const string& title, const string& content, const string& category, const string& source, const string& author, Date publicationDate);
 
 
@@ -37,7 +38,7 @@ public:
     string getSource() const;
     string getAuthor() const;
     Date getPublicationDate() const;
-    static singleLinkedList<Article>& getArticles();
+    static singleLinkedList& getArticles();
 
     void setTitle(const string& title);
     void setContent(const string& content);
@@ -45,16 +46,51 @@ public:
     void setSource(const string& source);
     void setAuthor(const string& author);
     void setPublicationDate(const Date& publicationDate);
-    
-    
 
-    Article searchByTitle(const vector<Article>& articles, const string& title);
+
+
+    Article searchByTitle(singleLinkedList articles, const string& title);
     vector<Article> filterBySource(const vector<Article>& articles, const string& source);
+
+    bool operator ==(Article);
 
     static bool saveArticles();
     static bool loadArticles();
 
 };
+
+class sllnode{
+public:
+    Article info;
+    sllnode* next;
+
+    sllnode();
+    sllnode(Article);
+    sllnode(Article, sllnode*);
+};
+
+
+class singleLinkedList {
+    sllnode* head, * tail;
+public:
+    singleLinkedList();
+
+    sllnode* getHead();
+    sllnode* getTail();
+
+    bool isEmpty();
+    void addToHead(Article el);
+    void addToTail(Article el);
+    Article deleteFromHead();
+    Article deleteFromTail();
+    void deletenode(Article el);
+    bool isInList(Article el) const;
+    void clear();
+
+    ~singleLinkedList();
+};
+
+
 
 
 
