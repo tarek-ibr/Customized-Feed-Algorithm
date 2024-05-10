@@ -25,6 +25,13 @@ int main() {
     //s1[0].setAuthor("eljooker");
 
 
+    Users u2 = u1[0];
+
+    u2.buildHeap();
+
+    cout<<u2.heapOfPrefrences.peaktop().relevancepoints <<endl << (u2.heapOfPrefrences.peaktop().article->getContent()) <<endl;
+
+
 
 
     Article::saveArticles();

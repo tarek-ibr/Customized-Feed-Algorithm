@@ -27,7 +27,7 @@ customVector<Users> &Users::getUsers() {
 float Users::calcScore(Article A){
     float score = 0;
     if(A.getCategory() == prefrence)
-        score+=0.15;
+        score+=0.4;
     if( (Date::getCrrentDate() - A.getPublicationDate()) < 7)
         score+=0.15;
     return score;
@@ -64,6 +64,14 @@ customVector<Article> Users::filterByCategory(const string& cat){
         }
     }
     return filtered;
+}
+
+void Users::buildHeap(){
+    customVector<Article>& articles = Article::getArticles();
+
+    for (size_t i = 0; i < articles.size(); ++i){
+        heapOfPrefrences.insert(maxHeapNode(&articles[i], calcScore(articles[i])));
+    }
 }
 
 bool Users::saveUsers() {

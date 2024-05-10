@@ -16,12 +16,16 @@ private:
     T* arr;
     size_t capacity;
     size_t current;
-
 public:
     customVector();
     customVector(const customVector& v);
     customVector& operator=(const customVector& v);
     ~customVector();
+
+    size_t& getcapacity();
+    size_t& getcurrent();
+
+    void setcurrent(size_t);
 
     void push(T data);
     void insert(size_t index, T data);
@@ -70,6 +74,21 @@ customVector<T>& customVector<T>::operator=(const customVector& v) {
 template <typename T>
 customVector<T>::~customVector() {
     delete[] arr;
+}
+
+template <typename T>
+size_t& customVector<T>::getcapacity(){
+    return capacity;
+}
+
+template <typename T>
+size_t& customVector<T>::getcurrent(){
+    return current;
+}
+
+template <typename T>
+void customVector<T>::setcurrent(size_t c){
+    current = c;
 }
 
 // Push method

@@ -52,19 +52,27 @@ private:
     string prefrence;
 
     static customVector<Users> users;
-    //MaxHeap<>
+
 
 public:
+
+    MaxHeap heapOfPrefrences;
+
     Users();
     Users(string, string, string);
+
     void setPrefrence(string);
 
     string getPrefrence();
     static customVector<Users>& getUsers();
+
     float calcScore(Article);
+
     customVector<Article> filterBySource(const string& source);
     customVector<Article> filterByAuthor(const string& Author);
     customVector<Article> filterByCategory(const string& cat);
+
+    void buildHeap();
 
 
 
