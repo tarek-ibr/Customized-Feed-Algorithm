@@ -33,6 +33,39 @@ float Users::calcScore(Article A){
     return score;
 }
 
+customVector<Article> Users::filterBySource(const string& source){
+        customVector<Article> filtered;
+        customVector<Article> articles = Article::getArticles();
+        for (size_t i = 0; i < articles.size(); ++i) {
+            if (articles[i].getSource() == source) {
+                filtered.push(articles[i]);
+            }
+        }
+        return filtered;
+}
+
+customVector<Article> Users::filterByAuthor(const string& Author){
+    customVector<Article> filtered;
+    customVector<Article> articles = Article::getArticles();
+    for (size_t i = 0; i < articles.size(); ++i) {
+        if (articles[i].getAuthor() == Author) {
+            filtered.push(articles[i]);
+        }
+    }
+    return filtered;
+}
+
+customVector<Article> Users::filterByCategory(const string& cat){
+    customVector<Article> filtered;
+    customVector<Article> articles = Article::getArticles();
+    for (size_t i = 0; i < articles.size(); ++i) {
+        if (articles[i].getCategory() == cat) {
+            filtered.push(articles[i]);
+        }
+    }
+    return filtered;
+}
+
 bool Users::saveUsers() {
     ofstream file("users.json");
 
