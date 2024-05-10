@@ -8,6 +8,7 @@
 #include <string>
 #include <iostream>
 #include "Article.h"
+#include "MaxHeap.h"
 
 using namespace std;
 
@@ -16,6 +17,7 @@ class Accounts {
 protected:
     string username;
     string password;
+
 public:
     Accounts();
     Accounts(string, string);
@@ -48,7 +50,10 @@ public:
 class Users : public Accounts{
 private:
     string prefrence;
+
     static customVector<Users> users;
+    //MaxHeap<>
+
 public:
     Users();
     Users(string, string, string);

@@ -29,7 +29,7 @@ private:
 
 public:
     Article();
-    Article(const string& title, const string& content, const string& category, const string& source, const string& author, Date publicationDate);
+    Article(const string& , const string& , const string& , const string& , const string& , Date );
 
 
     string getTitle() const;
