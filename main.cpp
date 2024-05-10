@@ -6,12 +6,22 @@
 int main() {
 
     Article::loadArticles();
+    Admins::loadAdmin();
+    Users::loadUsers();
 
-    singleLinkedList& s1 = Article::getArticles();
-    Admins a1 = Admins("tarek", "1234");
-    //a1.addArticle(Article());
 
-    sllnode* s2 = s1.getHead();
+    singleLinkedList<Article>& s1 = Article::getArticles();
+    singleLinkedList<Admins>& a1 = Admins::getAdmins();
+    singleLinkedList<Users>& u1 = Users::getUsers();
+
+
+    sllnode<Admins>* a2 = a1.getHead();
+    cout<<a2->info.getusername()<<endl;
+
+    sllnode<Users>* u2 = u1.getHead();
+    cout<<u2->info.getusername()<<endl;
+
+    sllnode<Article>* s2 = s1.getHead();
     cout<<s2->info.getTitle()<<endl;
 
     //sllnode* s3 = s1.getTail();
@@ -19,7 +29,12 @@ int main() {
 
     //s2->info.setAuthor("eljooker");
 
-    cout <<Article::saveArticles()<<endl;
+
+
+
+    Article::saveArticles();
+    Admins::saveAdmins();
+    Users::saveUsers();
 
     system("pause");
 

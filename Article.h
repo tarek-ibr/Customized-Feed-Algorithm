@@ -14,7 +14,9 @@
 
 using namespace std;
 
+template<typename T>
 class singleLinkedList;
+template<typename T>
 class sllnode;
 
 class Article {
@@ -26,7 +28,7 @@ private:
     string author;
     Date publicationDate;
 
-    static singleLinkedList articles;
+    static singleLinkedList<Article> articles;
 
 public:
     Article();
@@ -39,7 +41,7 @@ public:
     string getSource() const;
     string getAuthor() const;
     Date getPublicationDate() const;
-    static singleLinkedList& getArticles();
+    static singleLinkedList<Article>& getArticles();
 
     void setTitle(const string& title);
     void setContent(const string& content);
@@ -61,32 +63,35 @@ public:
 
 };
 
+
+
+template<typename T>
 class sllnode{
 public:
-    Article info;
+    T info;
     sllnode* next;
 
     sllnode();
-    sllnode(Article);
-    sllnode(Article, sllnode*);
+    sllnode(T);
+    sllnode(T, sllnode*);
 };
 
-
+template<typename T>
 class singleLinkedList {
-    sllnode* head, * tail;
+    sllnode<T>* head, * tail;
 public:
     singleLinkedList();
 
-    sllnode* getHead();
-    sllnode* getTail();
+    sllnode<T>* getHead();
+    sllnode<T>* getTail();
 
     bool isEmpty();
-    void addToHead(Article el);
-    void addToTail(Article el);
-    Article deleteFromHead();
-    Article deleteFromTail();
-    void deletenode(Article el);
-    bool isInList(Article el) const;
+    void addToHead(T el);
+    void addToTail(T el);
+    T deleteFromHead();
+    T deleteFromTail();
+    void deletenode(T el);
+    bool isInList(T el) const;
     void clear();
 
     ~singleLinkedList();

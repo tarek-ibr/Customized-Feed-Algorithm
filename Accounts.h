@@ -29,9 +29,12 @@ public:
 
 class Admins : public Accounts{
 private:
-
+    static singleLinkedList<Admins> admins;
 public:
     Admins(string, string);
+
+    static singleLinkedList<Admins>& getAdmins();
+
     void addArticle(Article);
 
     static bool saveAdmins();
@@ -42,14 +45,21 @@ public:
 class Users : public Accounts{
 private:
     string prefrence;
+    static singleLinkedList<Users> users;
 public:
     Users(string, string, string);
     void setPrefrence(string);
 
     string getPrefrence();
+    static singleLinkedList<Users>& getUsers();
 
+
+
+    static bool saveUsers();
+    static bool loadUsers();
 
 };
+
 
 
 #endif //CUSTOMIZED_NEWS_FEED_ALGORITHM_ACCOUNTS_H
