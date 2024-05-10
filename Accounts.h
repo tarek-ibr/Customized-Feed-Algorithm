@@ -7,6 +7,7 @@
 
 #include <string>
 #include <iostream>
+#include "Article.h"
 
 using namespace std;
 
@@ -27,9 +28,14 @@ public:
 };
 
 class Admins : public Accounts{
+private:
+
 public:
     Admins(string, string);
-    void addArticle();
+    void addArticle(Article);
+
+    static bool saveAdmins();
+    static bool loadAdmin();
 
 };
 

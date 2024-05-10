@@ -81,16 +81,16 @@ bool Article::loadArticles() {
     return true;
 }
 
-Article Article::searchByTitle(singleLinkedList articles, const string& t) {
+Article Article::search(Article a) {
     for (sllnode* temp=articles.getHead(); temp!=nullptr; temp=temp->next) {
-        if (temp->info.title == t) {
+        if (temp->info == a) {
             return temp->info;
         }
     }
     throw runtime_error("Article not found");
 }
 
-vector<Article> Article::filterBySource(const vector<Article>& articles, const string& source) {
+/*vector<Article> Article::filterBySource(const vector<Article>& articles, const string& source) {
     vector<Article> filtered;
     for (const auto& article : articles) {
         if (article.source == source) {
@@ -98,10 +98,17 @@ vector<Article> Article::filterBySource(const vector<Article>& articles, const s
         }
     }
     return filtered;
-}
+}*/
 
 bool Article::operator ==(Article other){
     if(this->getTitle() == other.getTitle()&&this->getAuthor() == other.getAuthor()&&this->getCategory() == other.getCategory()&&this->getContent() == other.getContent()&&this->getPublicationDate() == other.getPublicationDate()&&this->getSource() == other.getSource())
+        return true;
+    else
+        return false;
+}
+
+bool Article::operator !=(Article other){
+    if(this->getTitle() != other.getTitle()&&this->getAuthor() != other.getAuthor()&&this->getCategory() != other.getCategory()&&this->getContent() != other.getContent()&&!(this->getPublicationDate() == other.getPublicationDate())&&this->getSource() != other.getSource())
         return true;
     else
         return false;

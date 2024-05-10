@@ -15,6 +15,7 @@
 using namespace std;
 
 class singleLinkedList;
+class sllnode;
 
 class Article {
 private:
@@ -49,10 +50,11 @@ public:
 
 
 
-    Article searchByTitle(singleLinkedList articles, const string& title);
-    vector<Article> filterBySource(const vector<Article>& articles, const string& source);
+    Article search(Article);
+    //vector<Article> filterBySource(const vector<Article>& articles, const string& source);   //to be removed
 
     bool operator ==(Article);
+    bool operator !=(Article);
 
     static bool saveArticles();
     static bool loadArticles();
