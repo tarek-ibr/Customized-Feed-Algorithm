@@ -28,6 +28,7 @@ add_executable(
         MaxHeap.cpp
         Article.cpp
         BinarySearchTree.cpp
+        customVector.h
 )
 
 # Link external libraries to the executable
