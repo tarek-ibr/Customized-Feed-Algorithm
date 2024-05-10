@@ -24,6 +24,15 @@ customVector<Users> &Users::getUsers() {
     return users;
 }
 
+float Users::calcScore(Article A){
+    float score = 0;
+    if(A.getCategory() == prefrence)
+        score+=0.15;
+    if( (Date::getCrrentDate() - A.getPublicationDate()) < 7)
+        score+=0.15;
+    return score;
+}
+
 bool Users::saveUsers() {
     ofstream file("users.json");
 

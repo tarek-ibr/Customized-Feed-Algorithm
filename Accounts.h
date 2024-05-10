@@ -61,6 +61,7 @@ public:
 
     string getPrefrence();
     static customVector<Users>& getUsers();
+    float calcScore(Article);
 
 
 
