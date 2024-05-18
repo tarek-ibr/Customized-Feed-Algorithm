@@ -211,5 +211,7 @@ void Users::notInterested(maxHeapNode& node){
     // hashel el category bta3t el article de mn el prefrence vector bta3 el user
 }
 
-
+Article* Users::getArticle() {
+        return heapOfPrefrences.extract_max().article;
+}
 

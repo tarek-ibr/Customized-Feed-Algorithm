@@ -58,10 +58,11 @@ class Users : public Accounts{
 private:
     string prefrence;
     static customVector<Users> users;
+    customVector<prefrenceNode> prefrenceVector;
 
 public:
 
-    customVector<prefrenceNode> prefrenceVector;
+
 
     MaxHeap heapOfPrefrences;
 
@@ -87,6 +88,8 @@ public:
     void likeArticle(string);
     void notInterested(maxHeapNode& node);  //lw fe wa2t
     // to add mark as read
+
+    Article* getArticle();
 
 
     static bool saveUsers();

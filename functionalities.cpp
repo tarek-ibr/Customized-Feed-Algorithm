@@ -217,7 +217,6 @@ void userInteraction(Users& user){
         maxHeapNode topNode = user.heapOfPrefrences.extract_max();
         const Article* article = topNode.article;
 
-        cout << "\nArticle Relevance Score: " << topNode.relevancepoints << endl;
         displayArticle(*article);
 
         cout << "\nActions: [1] Like [2] Dislike [3] Next Article [4] Exit\n";
@@ -245,3 +244,5 @@ void userInteraction(Users& user){
     }
     cout << "No more articles.\n";
 }
+
+
