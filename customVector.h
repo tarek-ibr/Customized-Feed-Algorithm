@@ -38,6 +38,9 @@ public:
     size_t size() const;
     bool empty() const;
     void print() const;
+    T* begin();
+    T* end();
+
 };
 
 
@@ -188,6 +191,15 @@ void customVector<T>::print() const {
 }
 
 
+template <typename T>
+T* customVector<T>::begin() {
+    return arr;
+}
+
+template <typename T>
+T* customVector<T>::end() {
+    return arr +current;
+}
 
 
 

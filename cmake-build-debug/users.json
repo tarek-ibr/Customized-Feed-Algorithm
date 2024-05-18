@@ -1,7 +1,12 @@
 [
     {
-        "password": "12345",
-        "prefrence": "habl",
-        "username": "ziad"
+        "password": "01234",
+        "prefrence": "Technology",
+        "username": "ammar"
+    },
+    {
+        "password": "56789",
+        "prefrence": "Finance",
+        "username": "seif"
     }
 ]

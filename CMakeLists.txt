@@ -30,6 +30,8 @@ add_executable(
         BinarySearchTree.cpp
         customVector.h
         customSingleLinkedList.h
+        functionalities.h
+        functionalities.cpp
 )
 
 # Link external libraries to the executable

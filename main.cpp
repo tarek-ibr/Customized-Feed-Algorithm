@@ -1,6 +1,7 @@
 #include <iostream>
 #include "Article.h"
 #include "Accounts.h"
+#include "functionalities.h"
 
 
 int main() {
@@ -22,16 +23,7 @@ int main() {
     cout<<s1[0].getTitle()<<endl;
 
 
-    //s1[0].setAuthor("eljooker");
-
-
-    Users u2 = u1[0];
-
-    u2.buildHeap();
-
-    cout<<u2.heapOfPrefrences.peaktop().relevancepoints <<endl << (u2.heapOfPrefrences.peaktop().article->getContent()) <<endl;
-
-
+    displayNewsFeed(u1[0]);
 
 
     Article::saveArticles();
