@@ -126,4 +126,19 @@ bool Users::loadUsers() {
     return true;
 }
 
+void Users::likeArticle(maxHeapNode& node){
+    node.relevancepoints += 0.1;
+    // el mafrod ne3ml vector feh el preference w law 3aml like l article msh fe el preference hazwd el category bta3tha fe el preference
+}
+
+void Users::dislikeArticle(maxHeapNode& node){
+    node.relevancepoints -= 0.1;
+}
+
+void Users::notInterested(maxHeapNode& node){
+    node.relevancepoints = 0;
+    // hashel el category bta3t el article de mn el prefrence vector bta3 el user
+}
+
+
 
