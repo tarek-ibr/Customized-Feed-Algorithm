@@ -5,43 +5,41 @@
 
 
 
-
-
 int main() {
-
     Article::loadArticles();
     Admins::loadAdmin();
     Users::loadUsers();
 
+    customVector<Article>& articles = Article::getArticles();
+    customVector<Admins>& admins = Admins::getAdmins();
+    customVector<Users>& users = Users::getUsers();
 
-    customVector<Article>& s1 = Article::getArticles();
-    customVector<Admins>& a1 = Admins::getAdmins();
-    customVector<Users>& u1 = Users::getUsers();
+    // Example: User interaction
+    if (!users.empty()) {
+        Users& user = users[0];
+        user.setPrefrence("Technology");
 
-    Users u2= u1[0];
+        // Display news feed for the user
+        std::cout << "User news feed for preference '" << user.getPrefrence() << "':" << std::endl;
+        displayNewsFeed(user);
 
-    cout<<a1[0].getusername()<<endl;
+        // User menu
+        userMenu();
+    }
 
-    cout<<u1[0].getusername()<<endl;
+    // Example: Admin interaction
+    if (!admins.empty()) {
+        Admins& admin = admins[0];
 
-    cout<<s1[0].getTitle()<<endl;
+        // Admin menu
+        adminMenu();
 
+    }
 
-    //displayNewsFeed(u1[0]);
-
-    u2.loadPrefrenceVector();
-    cout<<u2.prefrenceVector[0].category<<endl;
-    u2.prefrenceVector[0].category = "cars";
-    u2.savePrefrenceVector();
-    cout<<u2.getPrefrence();
-
-
-    Article::saveArticles();
+    // Save data back to files
     Admins::saveAdmins();
     Users::saveUsers();
-
-    system("pause");
+    Article::saveArticles();
 
     return 0;
 }
-
