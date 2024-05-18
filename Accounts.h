@@ -62,9 +62,9 @@ class Users : public Accounts{
 private:
     string prefrence;
     static customVector<Users> users;
-    customVector<prefrenceNode> prefrenceVector;
-
 public:
+
+    customVector<prefrenceNode> prefrenceVector;
 
 
 
@@ -88,13 +88,13 @@ public:
     customVector<Article> filterByAuthor(const string& Author);
     customVector<Article> filterByCategory(const string& cat);
 
-    void buildHeap(vector<Article>& articles); //to be looked at
+    void buildHeap(customVector<Article>& articles); //to be looked at
 
     void likeArticle(string);
     void notInterested(maxHeapNode& node);  //lw fe wa2t
     // to add mark as read
 
-    Article* getArticle();
+    Article getArticle();
 
 
     static bool saveUsers();

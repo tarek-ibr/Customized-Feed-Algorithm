@@ -81,7 +81,14 @@ int main() {
         // Find the member by ID
         Users user = Users::findByUsername(username);
 
-        // Infinite loop for the member menu
+        user.loadPrefrenceVector();
+        user.buildHeap(Article::getArticles());
+
+        cout<<user.prefrenceVector[0].category;
+
+        cout << (user.getArticle()).getContent();
+
+        /*// Infinite loop for the member menu
         while(true){
 
             // Display the library name
@@ -89,7 +96,7 @@ int main() {
 
             // Welcome the member
             cout<<endl <<"\t\t\t\t\t\t\tWelcome " <<user.getusername() <<" to our newspaper " <<endl;
-            /*
+
             // Display the member menu
             diplayMenuMember();
 
@@ -128,8 +135,8 @@ int main() {
             system("pause");
 
             // Clear the console
-            system("cls");*/
-        }
+            system("cls");
+        }*/
     }
         // If the user is a librarian
     else if(type=="admin"){

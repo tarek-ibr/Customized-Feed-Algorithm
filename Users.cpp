@@ -128,7 +128,7 @@ customVector<Article> Users::filterByCategory(const string& cat){
     return filtered;
 }
 
-void Users::buildHeap(vector<Article>& articles){
+void Users::buildHeap(customVector<Article>& articles){
 
     for (size_t i = 0; i < articles.size(); ++i){
         heapOfPrefrences.insert(maxHeapNode(&articles[i], calcScore(articles[i])));
@@ -210,7 +210,8 @@ void Users::notInterested(maxHeapNode& node){
     // hashel el category bta3t el article de mn el prefrence vector bta3 el user
 }
 
-Article* Users::getArticle() {
-        return heapOfPrefrences.extract_max().article;
+Article Users::getArticle() {
+    maxHeapNode n= heapOfPrefrences.extract_max();
+    return *(n.article);
 }
 
