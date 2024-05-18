@@ -33,6 +33,66 @@ float Users::calcScore(Article A){
     return score;
 }
 
+Users Users::findByUsername(string username){
+    // Loop through all members
+    for(auto it:users)
+    {
+        // If the member is found
+        if(it.getusername()==username)
+        {
+            return it;
+        }
+    }
+    cout<<"Couldn't Find member"<<endl;
+
+    return Users();
+}
+
+void Users::loadPrefrenceVector(){
+    bool flag=0;
+    string str={};
+    int c=0;
+    for(int i=0;i<prefrence.length();){
+        flag=0;
+        str={};
+        c=0;
+        while(prefrence[i]!='/'&&prefrence[i]!='\0'&&i<prefrence.length()){
+            if(prefrence[i]==',') {
+                flag = 1;
+                i++;
+                continue;
+            }
+            if(!flag){
+                str=str+prefrence[i];
+            }
+            else
+                c=c*10+int(prefrence[i])-48;
+
+            i++;
+        }
+
+        i++;
+
+
+        prefrenceNode p;
+        p.category= str;
+        p.count= c;
+
+        prefrenceVector.push(p);
+    }
+}
+
+void Users::savePrefrenceVector() {
+    prefrence.clear();  // Clear the existing preference string
+    for (const auto& p : prefrenceVector) {
+        prefrence += p.category + ',' + std::to_string(p.count);
+        if (!prefrence.empty()) {
+            prefrence += '/';  // Add delimiter between entries
+        }
+
+    }
+}
+
 customVector<Article> Users::filterBySource(const string& source){
         customVector<Article> filtered;
         customVector<Article> articles = Article::getArticles();

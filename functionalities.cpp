@@ -15,36 +15,30 @@ bool authenticateUser() {
     cout << "Enter password: ";
     cin >> password;
 
+    string type = login(username, password);
+
+    if(type=="invalid") {
+        cout << "Invalid username or password.\n";
+        return false;
+    }
+    return true;
+}
+
+string login(string username, string password){
     // Check if the credentials match any admin account
     for (size_t i = 0; i < Admins::getAdmins().size(); ++i) {
         if (Admins::getAdmins()[i].getusername() == username && Admins::getAdmins()[i].getpassword() == password) {
-            cout << "Welcome, " << username << "!\n";
-            return true;
+            return "admin";
         }
     }
 
     // Check if the credentials match any user account
     for (size_t i = 0; i < Users::getUsers().size(); ++i) {
         if (Users::getUsers()[i].getusername() == username && Users::getUsers()[i].getpassword() == password) {
-            cout << "Welcome, " << username << "!\n";
-            return true;
+            return "user";
         }
     }
-
-    cout << "Invalid username or password.\n";
-    return false;
-}
-
-bool currentUserIsAdmin() {
-    // Implement logic to check if the current user is an Admin
-    // For now, let's assume the first user is an admin
-    return !Admins::getAdmins().empty();
-}
-
-bool currentUserIsUser() {
-    // Implement logic to check if the current user is a User
-    // For now, let's assume the second user is a regular user
-    return Users::getUsers().size() > 1;
+    return "invalid";
 }
 
 void adminMenu() {

@@ -47,14 +47,20 @@ public:
 
 };
 
+
+struct prefrenceNode{
+    string category;
+    unsigned int count;
+};
+
 class Users : public Accounts{
 private:
     string prefrence;
-
     static customVector<Users> users;
 
-
 public:
+
+    customVector<prefrenceNode> prefrenceVector;
 
     MaxHeap heapOfPrefrences;
 
@@ -67,6 +73,9 @@ public:
     static customVector<Users>& getUsers();
 
     float calcScore(Article);
+    Users findByUsername(string);
+    void loadPrefrenceVector();
+    void savePrefrenceVector();
 
     customVector<Article> filterBySource(const string& source);
     customVector<Article> filterByAuthor(const string& Author);

@@ -18,11 +18,7 @@ using namespace std;
 // Function to handle user authentication
 bool authenticateUser();
 
-// Function to check if the logged-in user is an Admin
-bool currentUserIsAdmin();
-
-// Function to check if the logged-in user is a User
-bool currentUserIsUser();
+string login(string, string);
 
 // Function to display the admin menu and handle admin functionalities
 void adminMenu();
