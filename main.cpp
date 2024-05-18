@@ -30,10 +30,10 @@ int main() {
     //displayNewsFeed(u1[0]);
 
     u2.loadPrefrenceVector();
-    cout<<u2.prefrenceVector[0].category;
+    cout<<u2.prefrenceVector[0].category<<endl;
     u2.prefrenceVector[0].category = "cars";
     u2.savePrefrenceVector();
-    u2.getPrefrence();
+    cout<<u2.getPrefrence();
 
 
     Article::saveArticles();
