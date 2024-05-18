@@ -41,7 +41,11 @@ public:
 
     static customVector<Admins>& getAdmins();
 
+    static Admins findByUsername(string);
+
     void addArticle(Article);
+    bool registerNewUser(string, string);
+    bool removeUser(string);
 
     static bool saveAdmins();
     static bool loadAdmin();
@@ -74,8 +78,9 @@ public:
     string getPrefrence();
     static customVector<Users>& getUsers();
 
+    static Users findByUsername(string);
+
     float calcScore(Article);
-    Users findByUsername(string);
     void loadPrefrenceVector();
     void savePrefrenceVector();
 

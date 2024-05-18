@@ -15,10 +15,47 @@ customVector<Admins> &Admins::getAdmins() {
     return admins;
 }
 
+Admins Admins::findByUsername(string username){
+    // Loop through all members
+    for(auto it:admins)
+    {
+        // If the member is found
+        if(it.getusername()==username)
+        {
+            return it;
+        }
+    }
+
+    return Admins();
+}
 
 void Admins::addArticle(Article a) {
     customVector<Article>& articles = Article::getArticles();
     articles.push(a);
+}
+
+bool Admins::registerNewUser(string u, string p){
+    customVector<Users>& users= Users::getUsers();
+    for(auto& it: users){
+        if(u==it.getusername()){
+            return false;
+        }
+    }
+    Users::getUsers().push(Users(u,p, ""));
+    return true;
+}
+bool Admins::removeUser(string u){
+    customVector<Users>& users= Users::getUsers();
+    bool flag = false;
+    size_t index=0;
+    for(auto& it: users){
+        if(u==it.getusername()){
+            users.erase(index);
+            flag = true;
+        }
+        index++;
+    }
+    return flag;
 }
 
 bool Admins::saveAdmins() {

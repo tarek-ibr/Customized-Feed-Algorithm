@@ -39,4 +39,5 @@ target_link_libraries(
         Customized_News_Feed_Algorithm  # Target executable
         PRIVATE  # Scope is private to this target
         nlohmann_json::nlohmann_json  # Library to link
+        winmm  # Link against the Winmm library
 )

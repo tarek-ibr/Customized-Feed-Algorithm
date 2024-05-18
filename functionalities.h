@@ -13,12 +13,13 @@
 
 using namespace std;
 
+void loadFiles();
 
-
-// Function to handle user authentication
-bool authenticateUser();
+void saveFiles();
 
 string login(string, string);
+
+void implementAdminChoice(Admins&, int);
 
 // Function to display the admin menu and handle admin functionalities
 void adminMenu();
@@ -29,9 +30,9 @@ void userMenu();
 
 void displayNewsFeed(Users& user);
 
-void addNewArticle(Admins& admin) ;
 
 void displayArticle(const Article& article);
+
 
 
 void userInteraction(Users& user);

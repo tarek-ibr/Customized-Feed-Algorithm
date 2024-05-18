@@ -46,7 +46,6 @@ Users Users::findByUsername(string username){
             return it;
         }
     }
-    cout<<"Couldn't Find member"<<endl;
 
     return Users();
 }
