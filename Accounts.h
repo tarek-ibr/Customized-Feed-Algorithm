@@ -9,6 +9,7 @@
 #include <iostream>
 #include "Article.h"
 #include "MaxHeap.h"
+#include <math.h>
 
 using namespace std;
 
@@ -81,11 +82,10 @@ public:
     customVector<Article> filterByAuthor(const string& Author);
     customVector<Article> filterByCategory(const string& cat);
 
-    void buildHeap();
+    void buildHeap(); //to be looked at
 
-    void likeArticle(maxHeapNode& node);
-    void dislikeArticle(maxHeapNode& node);
-    void notInterested(maxHeapNode& node);
+    void likeArticle(string);
+    void notInterested(maxHeapNode& node);  //lw fe wa2t
     // to add mark as read
 
 

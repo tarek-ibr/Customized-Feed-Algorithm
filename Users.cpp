@@ -25,11 +25,14 @@ customVector<Users> &Users::getUsers() {
 }
 
 float Users::calcScore(Article A){
-    float score = 0;
-    if(A.getCategory() == prefrence)
-        score+=0.4;
-    if( (Date::getCrrentDate() - A.getPublicationDate()) < 7)
-        score+=0.15;
+    float score = 1;
+    for(auto& it:prefrenceVector){
+        if(it.category==A.getCategory()){
+            score=pow(it.count, 0.5);
+            break;
+        }
+    }
+    score*=pow(0.95, (Date::getCrrentDate() - A.getPublicationDate()));
     return score;
 }
 
@@ -186,13 +189,22 @@ bool Users::loadUsers() {
     return true;
 }
 
-void Users::likeArticle(maxHeapNode& node){
-    node.relevancepoints += 0.1;
-    // el mafrod ne3ml vector feh el preference w law 3aml like l article msh fe el preference hazwd el category bta3tha fe el preference
-}
+void Users::likeArticle(string cat){
+    bool flag =0;
+    for(auto& it:prefrenceVector){
+        if(it.category==cat) {
+            it.count++;
+            flag=1;
+        }
+    }
+    if (!flag){
+        prefrenceNode p;
+        p.category= cat;
+        p.count= 1;
 
-void Users::dislikeArticle(maxHeapNode& node){
-    node.relevancepoints -= 0.1;
+        prefrenceVector.push(p);
+    }
+
 }
 
 void Users::notInterested(maxHeapNode& node){
