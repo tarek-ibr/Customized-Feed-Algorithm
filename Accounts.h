@@ -74,6 +74,10 @@ public:
 
     void buildHeap();
 
+    void likeArticle(maxHeapNode& node);
+    void dislikeArticle(maxHeapNode& node);
+    void notInterested(maxHeapNode& node);
+    // to add mark as read
 
 
     static bool saveUsers();
