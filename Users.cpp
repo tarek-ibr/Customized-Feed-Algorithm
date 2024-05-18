@@ -129,8 +129,7 @@ customVector<Article> Users::filterByCategory(const string& cat){
     return filtered;
 }
 
-void Users::buildHeap(){
-    customVector<Article>& articles = Article::getArticles();
+void Users::buildHeap(vector<Article>& articles){
 
     for (size_t i = 0; i < articles.size(); ++i){
         heapOfPrefrences.insert(maxHeapNode(&articles[i], calcScore(articles[i])));

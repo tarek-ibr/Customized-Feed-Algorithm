@@ -211,7 +211,7 @@ void displayArticle(const Article& article) {
 
 
 void userInteraction(Users& user){
-    user.buildHeap();
+    //user.buildHeap();
 
     while (!user.heapOfPrefrences.isEmpty()) {
         maxHeapNode topNode = user.heapOfPrefrences.extract_max();

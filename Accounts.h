@@ -82,7 +82,7 @@ public:
     customVector<Article> filterByAuthor(const string& Author);
     customVector<Article> filterByCategory(const string& cat);
 
-    void buildHeap(); //to be looked at
+    void buildHeap(vector<Article>& articles); //to be looked at
 
     void likeArticle(string);
     void notInterested(maxHeapNode& node);  //lw fe wa2t
