@@ -247,19 +247,8 @@ void displayCompanyName(){
     cout<<"\n\n\n";
 }
 
-// Function to display the member menu
-void diplayMenuMember(){
-    SetConsoleTextAttribute(hConsole, 3);
-    cout << "\nSelect an option:\n";
-    cout << "1. Request to borrow a book\n";
-    cout << "2. Return a book\n";
-    cout << "3. Display loaned books\n";
-    cout << "4. Display your information\n";
-    cout << "5. Display book list\n";
-    cout << "6. Find a book\n";
-    cout << "7. Logout\n";
-    cout << "8. Exit\n";
-}
+
+
 
 void displayAdminMenu() {
     cout << "Admin Menu:" << endl;
