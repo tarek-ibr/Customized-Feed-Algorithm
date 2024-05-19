@@ -44,7 +44,7 @@ public:
     static Admins findByUsername(string);
 
     void addArticle(Article);
-    bool registerNewUser(string, string);
+    static bool registerNewUser(string, string);
     bool removeUser(string);
 
     static bool saveAdmins();
