@@ -46,8 +46,8 @@ void MaxHeap::heapifyup(size_t index)
 
 void MaxHeap::heapifydown(size_t index) {
 
-    while (left_child(index) < heap.getcurrent() && (heap[index].relevancepoints > heap[left_child(index)].relevancepoints)
-           || (right_child(index) < heap.getcurrent() && heap[index].relevancepoints > heap[right_child(index)].relevancepoints))
+    while (left_child(index) < heap.getcurrent() && (heap[index].relevancepoints < heap[left_child(index)].relevancepoints)
+           || (right_child(index) < heap.getcurrent() && heap[index].relevancepoints < heap[right_child(index)].relevancepoints))
     {
         // max heap
         int min = index;
@@ -73,7 +73,7 @@ maxHeapNode MaxHeap::extract_max() {
     maxHeapNode value = heap[0];
 
     swap(heap[0], heap[heap.getcurrent()-1]);
-    heap.erase(heap.getcurrent()-1);
+    heap.setcurrent(heap.getcurrent()-1);
     heapifydown(0);
 
     return value;

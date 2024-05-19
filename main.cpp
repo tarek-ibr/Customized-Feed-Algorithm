@@ -32,6 +32,7 @@ HANDLE  hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
 // Function declarations
 void displayCompanyName();
 void displayAdminMenu();
+void displayUserMenu();
 void playSound(const char* wavPath);
 
 // Main function
@@ -79,16 +80,17 @@ int main() {
     // If the user is a member
     if(type=="user"){
         // Find the member by ID
-        Users user = Users::findByUsername(username);
+        customVector<Users>& users = Users::getUsers();
+
+        Users& user=users[Users::findByUsername(username)];
 
         user.loadPrefrenceVector();
         user.buildHeap(Article::getArticles());
 
-        cout<<user.prefrenceVector[0].category;
 
-        cout << (user.getArticle()).getContent();
+        Article currentArticle = user.getArticle();
 
-        /*// Infinite loop for the member menu
+        // Infinite loop for the member menu
         while(true){
 
             // Display the library name
@@ -96,19 +98,30 @@ int main() {
 
             // Welcome the member
             cout<<endl <<"\t\t\t\t\t\t\tWelcome " <<user.getusername() <<" to our newspaper " <<endl;
+            if (currentArticle ==Article()){
+                cout<<"you have finished all the articles";
+                break;
+            }
+            currentArticle.displayArticle();
 
-            // Display the member menu
-            diplayMenuMember();
+            cout<<endl<<endl;
+            displayUserMenu();
 
             // Prompt the user to choose an option
-            int memberOption;
+            int userOption;
             Member_Choose_Option:
-            cin>>memberOption;
+            cin>>userOption;
 
+
+            if(userOption==1){
+                implementUserChoice(user, userOption, currentArticle);
+                user.savePrefrenceVector();
+                goto Member_Choose_Option;
+            }
             // If the user chooses to logout
-            if(memberOption==7) {
+            else if(userOption==3) {
                 // Save the files
-                SaveFiles();
+                saveFiles();
 
                 // Clear the console
                 system("cls");
@@ -117,26 +130,21 @@ int main() {
                 goto Login;
             }
                 // If the user chooses to exit
-            else if(memberOption==8)
+            else if(userOption==4)
                 break;
                 // If the user enters an invalid choice
-            else if (memberOption <1 || memberOption > 8){
+            else if (userOption <1 || userOption > 4){
                 cout<<"Invalid choice" <<endl;
                 goto Member_Choose_Option;
             }
 
-            // Clear the console
-            system("cls");
 
             // Implement the chosen option
-            implementMemberChoice(member, memberOption);
-
-            // Pause the console
-            system("pause");
+            implementUserChoice(user, userOption, currentArticle);
 
             // Clear the console
             system("cls");
-        }*/
+        }
     }
         // If the user is a librarian
     else if(type=="admin"){
@@ -247,6 +255,14 @@ void displayAdminMenu() {
     cout << "3. Add Article" << endl;
     cout << "4. logout" << endl;
     cout << "5. Exit" << endl;
+}
+
+void displayUserMenu() {
+    cout << "User Menu:" << endl;
+    cout << "1. Like" << endl;
+    cout << "2. Next article" << endl;
+    cout << "3. logout" << endl;
+    cout << "4. Exit" << endl;
 }
 
 // Function to play a sound

@@ -25,8 +25,8 @@ public:
 
 class MaxHeap {
 private:
-    customVector<maxHeapNode> heap;
 public:
+    customVector<maxHeapNode> heap;
     MaxHeap();
     MaxHeap(customVector<maxHeapNode>);
 

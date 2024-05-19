@@ -78,7 +78,7 @@ public:
     string getPrefrence();
     static customVector<Users>& getUsers();
 
-    static Users findByUsername(string);
+    static int findByUsername(string);
 
     float calcScore(Article);
     void loadPrefrenceVector();

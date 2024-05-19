@@ -155,17 +155,17 @@ void customVector<T>::clear() {
 // Operator[]
 template <typename T>
 T& customVector<T>::operator[](size_t index) {
-    if (index >= current) {
+    /*if (index >= current) {
         throw std::out_of_range("Index out of range");
-    }
+    }*/
     return arr[index];
 }
 
 template <typename T>
 const T& customVector<T>::operator[](size_t index) const {
-    if (index >= current) {
+    /*if (index >= current) {
         throw std::out_of_range("Index out of range");
-    }
+    }*/
     return arr[index];
 }
 

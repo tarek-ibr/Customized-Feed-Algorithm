@@ -48,7 +48,7 @@ public:
     void setPublicationDate(const Date& publicationDate);
 
 
-
+    void displayArticle();
     Article search(Article);
     //vector<Article> filterBySource(const vector<Article>& articles, const string& source);   //to be removed
 

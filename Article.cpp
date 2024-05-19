@@ -81,6 +81,15 @@ bool Article::loadArticles() {
     return true;
 }
 
+void Article::displayArticle() {
+    cout << "Title: " << title << endl;
+    cout << "Author: " << author << endl;
+    cout << "Category: " << category << endl;
+    cout << "Source: " << source << endl;
+    cout << "Publication Date: " << publicationDate.getDate() << endl;
+    cout << "Content: " << content << endl;
+}
+
 Article Article::search(Article a) {
     for (size_t i=0;i<articles.size();i++) {
         if (articles[i] == a) {

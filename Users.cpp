@@ -36,18 +36,21 @@ float Users::calcScore(Article A){
     return score;
 }
 
-Users Users::findByUsername(string username){
+int Users::findByUsername(string username){
+    int i=0;
     // Loop through all members
-    for(auto it:users)
+    for(auto& it:users)
     {
         // If the member is found
         if(it.getusername()==username)
         {
-            return it;
+            Users* u = &it;
+            break;
         }
+        i++;
     }
 
-    return Users();
+    return i;
 }
 
 void Users::loadPrefrenceVector(){
@@ -211,7 +214,11 @@ void Users::notInterested(maxHeapNode& node){
 }
 
 Article Users::getArticle() {
-    maxHeapNode n= heapOfPrefrences.extract_max();
-    return *(n.article);
+    if(!heapOfPrefrences.isEmpty()) {
+        maxHeapNode n = heapOfPrefrences.extract_max();
+        return *(n.article);
+    }
+    else
+        return Article();
 }
 
