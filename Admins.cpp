@@ -41,7 +41,7 @@ bool Admins::registerNewUser(string u, string p){
             return false;
         }
     }
-    Users::getUsers().push(Users(u,p, ""));
+    Users::getUsers().push(Users(u,p, "", ""));
     return true;
 }
 bool Admins::removeUser(string u){

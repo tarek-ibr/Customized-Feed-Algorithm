@@ -64,10 +64,12 @@ private:
     static customVector<Users> users;
     customVector<prefrenceNode> prefrenceVector;
     MaxHeap heapOfPrefrences;
+    string seen;
+    customVector<string> seenVector;
 public:
 
     Users();
-    Users(string, string, string);
+    Users(string, string, string, string);
 
     void setPrefrence(string);
 
@@ -79,6 +81,8 @@ public:
     float calcScore(Article);
     void loadPrefrenceVector();
     void savePrefrenceVector();
+    void loadSeenVector();
+    void saveSeenVector();
 
     customVector<Article> filterBySource(const string& source);
     customVector<Article> filterByAuthor(const string& Author);

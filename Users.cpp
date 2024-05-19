@@ -9,7 +9,7 @@ customVector<Users> Users::users = customVector<Users>();
 
 Users::Users() : Accounts(){}
 
-Users::Users(string u, string pass, string pref) : Accounts(u, pass), prefrence(pref){}
+Users::Users(string u, string pass, string pref, string s) : Accounts(u, pass), prefrence(pref), seen(s){}
 
 
 void Users::setPrefrence(string p) {
@@ -99,6 +99,28 @@ void Users::savePrefrenceVector() {
     }
 }
 
+void Users::loadSeenVector(){
+    string str={};
+    seenVector={};
+    for(int i=0;i<seen.length();){
+        str={};
+        while(seen[i]!='/'&&seen[i]!='\0'&&i<seen.length()){
+            str+=seen[i];
+            i++;
+        }
+        i++;
+
+        seenVector.push(str);
+    }
+}
+
+void Users::saveSeenVector(){
+    seen.clear();  // Clear the existing preference string
+    for (const auto& it : seenVector) {
+        seen += it + '/' ;
+    }
+}
+
 customVector<Article> Users::filterBySource(const string& source){
         customVector<Article> filtered;
         customVector<Article> articles = Article::getArticles();
@@ -134,8 +156,17 @@ customVector<Article> Users::filterByCategory(const string& cat){
 
 void Users::buildHeap(customVector<Article>& articles){
     heapOfPrefrences.clear();
+    bool flag =false;
     for (size_t i = 0; i < articles.size(); ++i){
-        heapOfPrefrences.insert(maxHeapNode(&articles[i], calcScore(articles[i])));
+        flag=false;
+        for(auto& it : seenVector){
+            if (articles[i].getContent()==it) {
+                flag = true;
+                break;
+            }
+        }
+        if (!flag)
+            heapOfPrefrences.insert(maxHeapNode(&articles[i], calcScore(articles[i])));
     }
 }
 
@@ -156,6 +187,7 @@ bool Users::saveUsers() {
         jsonObj["username"] = users[i].username;
         jsonObj["password"] = users[i].password;
         jsonObj["prefrence"] = users[i].prefrence;
+        jsonObj["seen"] = users[i].seen;
 
         output.push_back(jsonObj);  // Append the new article to the JSON array
     }
@@ -183,8 +215,9 @@ bool Users::loadUsers() {
         string username = jsonObj["username"];
         string password = jsonObj["password"];
         string prefrence = jsonObj["prefrence"];
+        string seen = jsonObj["seen"];
 
-        users.push(Users(username, password, prefrence));
+        users.push(Users(username, password, prefrence,seen));
     }
     file.close();
 
@@ -217,6 +250,7 @@ void Users::notInterested(maxHeapNode& node){
 Article Users::getArticle() {
     if(!heapOfPrefrences.isEmpty()) {
         maxHeapNode n = heapOfPrefrences.extract_max();
+        seenVector.push(n.article->getContent());
         return *(n.article);
     }
     else

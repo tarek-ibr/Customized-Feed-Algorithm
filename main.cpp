@@ -82,9 +82,10 @@ int main() {
         // Find the member by ID
         customVector<Users>& users = Users::getUsers();
         Users& user=users[Users::findByUsername(username)];
-        bool flag=0;
+        int flag=0;
 
         user.loadPrefrenceVector();
+        user.loadSeenVector();
         user.buildHeap(Article::getArticles());
 
         Article currentArticle = user.getArticle();
@@ -109,18 +110,30 @@ int main() {
             // Prompt the user to choose an option
             int userOption;
             Member_Choose_Option:
+            cin.ignore();
             cin>>userOption;
 
+            if(userOption==1&&flag==1)
+                goto Member_Choose_Option;
+            else
+                flag=0;
 
-            if(userOption==1&&!flag){
+            if(userOption==1){
                 implementUserChoice(user, userOption, currentArticle);
                 user.savePrefrenceVector();
+                user.saveSeenVector();
+                user.buildHeap(Article::getArticles());
                 flag=1;
                 goto Member_Choose_Option;
+            }
+            else if(userOption==2){
+                implementUserChoice(user, userOption, currentArticle);
+                user.saveSeenVector();
             }
             // If the user chooses to logout
             else if(userOption==3) {
                 // Save the files
+                user.saveSeenVector();
                 saveFiles();
 
                 // Clear the console
@@ -130,19 +143,17 @@ int main() {
                 goto Login;
             }
                 // If the user chooses to exit
-            else if(userOption==4)
+            else if(userOption==4) {
+                user.saveSeenVector();
                 break;
+            }
                 // If the user enters an invalid choice
             else if (userOption <1 || userOption > 4){
                 cout<<"Invalid choice" <<endl;
                 goto Member_Choose_Option;
             }
-            else if(flag==1)
-                goto Member_Choose_Option;
 
 
-            // Implement the chosen option
-            implementUserChoice(user, userOption, currentArticle);
 
             // Clear the console
             system("cls");
