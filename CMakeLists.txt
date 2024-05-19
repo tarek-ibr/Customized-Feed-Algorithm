@@ -32,6 +32,7 @@ add_executable(
         customSingleLinkedList.h
         functionalities.h
         functionalities.cpp
+        json.h
 )
 
 # Link external libraries to the executable
