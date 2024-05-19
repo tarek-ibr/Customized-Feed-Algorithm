@@ -8,7 +8,7 @@
 #include <string>
 #include "Date.h"
 #include "customVector.h"
-#include <nlohmann/json.hpp>
+#include "json.h"
 #include <fstream>
 #include <stdexcept>
 
