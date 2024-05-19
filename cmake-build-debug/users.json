@@ -2,19 +2,19 @@
     {
         "password": "01234",
         "prefrence": "Technology,18/Finance,8/Sports,1/Health,1/",
-        "seen": "",
+        "seen": "The latest advancements in AI are transforming the tech industry. Companies are leveraging machine learning and neural networks to automate processes and gain insights from vast amounts of data. These technologies are being applied in various fields, from healthcare to finance, revolutionizing the way we approach complex problems./",
         "username": "ammar"
     },
     {
         "password": "56789",
         "prefrence": "Finance,18/Technology,2/",
-        "seen": "",
+        "seen": "The latest advancements in AI are transforming the tech industry. Companies are leveraging machine learning and neural networks to automate processes and gain insights from vast amounts of data. These technologies are being applied in various fields, from healthcare to finance, revolutionizing the way we approach complex problems./",
         "username": "seif"
     },
     {
         "password": "s7s",
         "prefrence": "",
-        "seen": "",
+        "seen": "The latest advancements in AI are transforming the tech industry. Companies are leveraging machine learning and neural networks to automate processes and gain insights from vast amounts of data. These technologies are being applied in various fields, from healthcare to finance, revolutionizing the way we approach complex problems./",
         "username": "hussein"
     }
 ]
