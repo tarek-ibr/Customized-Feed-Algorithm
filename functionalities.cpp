@@ -102,6 +102,10 @@ void implementUserChoice(Users& user, int choice, Article& currentArticle){
             break;
         }
         case 2: {
+            user.notInterested(currentArticle.getCategory());
+            break;
+        }
+        case 3: {
             currentArticle = user.getArticle();
             break;
         }

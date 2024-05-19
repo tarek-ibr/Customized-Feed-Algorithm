@@ -121,28 +121,6 @@ void Users::saveSeenVector(){
     }
 }
 
-customVector<Article> Users::filterBySource(const string& source){
-        customVector<Article> filtered;
-        customVector<Article> articles = Article::getArticles();
-        for (size_t i = 0; i < articles.size(); ++i) {
-            if (articles[i].getSource() == source) {
-                filtered.push(articles[i]);
-            }
-        }
-        return filtered;
-}
-
-customVector<Article> Users::filterByAuthor(const string& Author){
-    customVector<Article> filtered;
-    customVector<Article> articles = Article::getArticles();
-    for (size_t i = 0; i < articles.size(); ++i) {
-        if (articles[i].getAuthor() == Author) {
-            filtered.push(articles[i]);
-        }
-    }
-    return filtered;
-}
-
 customVector<Article> Users::filterByCategory(const string& cat){
     customVector<Article> filtered;
     customVector<Article> articles = Article::getArticles();
@@ -242,9 +220,21 @@ void Users::likeArticle(string cat){
 
 }
 
-void Users::notInterested(maxHeapNode& node){
-    node.relevancepoints = 0;
-    // hashel el category bta3t el article de mn el prefrence vector bta3 el user
+void Users::notInterested(string cat){
+    bool flag =0;
+    for(auto& it:prefrenceVector){
+        if(it.category==cat) {
+            it.count-=20;
+            flag=1;
+        }
+    }
+    if (!flag){
+        prefrenceNode p;
+        p.category= cat;
+        p.count= -20;
+
+        prefrenceVector.push(p);
+    }
 }
 
 Article Users::getArticle() {

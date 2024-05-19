@@ -55,7 +55,7 @@ public:
 
 struct prefrenceNode{
     string category;
-    unsigned int count;
+    int count;
 };
 
 class Users : public Accounts{
@@ -84,14 +84,13 @@ public:
     void loadSeenVector();
     void saveSeenVector();
 
-    customVector<Article> filterBySource(const string& source);
-    customVector<Article> filterByAuthor(const string& Author);
+
     customVector<Article> filterByCategory(const string& cat);
 
     void buildHeap(customVector<Article>& articles); //to be looked at
 
     void likeArticle(string);
-    void notInterested(maxHeapNode& node);  //lw fe wa2t
+    void notInterested(string);  //lw fe wa2t
     // to add mark as read
 
     Article getArticle();

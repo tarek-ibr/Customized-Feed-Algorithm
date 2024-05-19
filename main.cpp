@@ -128,10 +128,18 @@ int main() {
             }
             else if(userOption==2){
                 implementUserChoice(user, userOption, currentArticle);
+                user.savePrefrenceVector();
+                user.saveSeenVector();
+                user.buildHeap(Article::getArticles());
+                implementUserChoice(user, 3, currentArticle);
+                user.saveSeenVector();
+            }
+            else if(userOption==3){
+                implementUserChoice(user, userOption, currentArticle);
                 user.saveSeenVector();
             }
             // If the user chooses to logout
-            else if(userOption==3) {
+            else if(userOption==4) {
                 // Save the files
                 user.saveSeenVector();
                 saveFiles();
@@ -143,12 +151,12 @@ int main() {
                 goto Login;
             }
                 // If the user chooses to exit
-            else if(userOption==4) {
+            else if(userOption==5) {
                 user.saveSeenVector();
                 break;
             }
                 // If the user enters an invalid choice
-            else if (userOption <1 || userOption > 4){
+            else if (userOption <1 || userOption > 5){
                 cout<<"Invalid choice" <<endl;
                 goto Member_Choose_Option;
             }
@@ -262,9 +270,10 @@ void displayAdminMenu() {
 void displayUserMenu() {
     cout << "User Menu:" << endl;
     cout << "1. Like" << endl;
-    cout << "2. Next article" << endl;
-    cout << "3. logout" << endl;
-    cout << "4. Exit" << endl;
+    cout << "2. Not interested" << endl;
+    cout << "3. Next article" << endl;
+    cout << "4. logout" << endl;
+    cout << "5. Exit" << endl;
 }
 
 // Function to play a sound
