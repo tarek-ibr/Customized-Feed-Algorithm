@@ -25,8 +25,8 @@ public:
 
 class MaxHeap {
 private:
-public:
     customVector<maxHeapNode> heap;
+public:
     MaxHeap();
     MaxHeap(customVector<maxHeapNode>);
 
@@ -44,6 +44,7 @@ public:
     maxHeapNode peaktop();
     bool isEmpty() const;
     void build_heap();
+    void clear();
 
     void heap_sort();
 };

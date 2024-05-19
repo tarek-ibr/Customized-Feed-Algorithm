@@ -57,6 +57,7 @@ void Users::loadPrefrenceVector(){
     bool flag=0;
     string str={};
     int c=0;
+    prefrenceVector={};
     for(int i=0;i<prefrence.length();){
         flag=0;
         str={};
@@ -132,7 +133,7 @@ customVector<Article> Users::filterByCategory(const string& cat){
 }
 
 void Users::buildHeap(customVector<Article>& articles){
-
+    heapOfPrefrences.clear();
     for (size_t i = 0; i < articles.size(); ++i){
         heapOfPrefrences.insert(maxHeapNode(&articles[i], calcScore(articles[i])));
     }

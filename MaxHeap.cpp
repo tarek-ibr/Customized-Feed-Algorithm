@@ -116,6 +116,11 @@ void MaxHeap::build_heap() {
     }
 }
 
+void MaxHeap::clear(){
+    heap.clear();
+}
+
+
 void MaxHeap::heap_sort() {
     build_heap();
 

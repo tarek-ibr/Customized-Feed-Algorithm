@@ -62,13 +62,9 @@ class Users : public Accounts{
 private:
     string prefrence;
     static customVector<Users> users;
-public:
-
     customVector<prefrenceNode> prefrenceVector;
-
-
-
     MaxHeap heapOfPrefrences;
+public:
 
     Users();
     Users(string, string, string);
