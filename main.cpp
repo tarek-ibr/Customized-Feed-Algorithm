@@ -81,12 +81,11 @@ int main() {
     if(type=="user"){
         // Find the member by ID
         customVector<Users>& users = Users::getUsers();
-
         Users& user=users[Users::findByUsername(username)];
+        bool flag=0;
 
         user.loadPrefrenceVector();
         user.buildHeap(Article::getArticles());
-
 
         Article currentArticle = user.getArticle();
 
@@ -113,9 +112,10 @@ int main() {
             cin>>userOption;
 
 
-            if(userOption==1){
+            if(userOption==1&&!flag){
                 implementUserChoice(user, userOption, currentArticle);
                 user.savePrefrenceVector();
+                flag=1;
                 goto Member_Choose_Option;
             }
             // If the user chooses to logout
@@ -137,6 +137,8 @@ int main() {
                 cout<<"Invalid choice" <<endl;
                 goto Member_Choose_Option;
             }
+            else if(flag==1)
+                goto Member_Choose_Option;
 
 
             // Implement the chosen option
