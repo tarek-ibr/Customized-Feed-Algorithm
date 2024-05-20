@@ -213,7 +213,7 @@ void Users::likeArticle(string cat){
     if (!flag){
         prefrenceNode p;
         p.category= cat;
-        p.count= 1;
+        p.count= 2;
 
         prefrenceVector.push(p);
     }
@@ -224,14 +224,18 @@ void Users::notInterested(string cat){
     bool flag =0;
     for(auto& it:prefrenceVector){
         if(it.category==cat) {
+
             it.count-=20;
             flag=1;
+            if (it.count<0)
+                it.count=0;
         }
     }
+
     if (!flag){
         prefrenceNode p;
         p.category= cat;
-        p.count= -20;
+        p.count= 0;
 
         prefrenceVector.push(p);
     }
