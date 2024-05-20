@@ -237,6 +237,22 @@ void Users::notInterested(string cat){
     }
 }
 
+void Users::removeLikeArticle(string cat){
+    for(auto& it:prefrenceVector){
+        if(it.category==cat) {
+            it.count--;
+        }
+    }
+}
+
+void Users::removeNotInterested(string cat){
+    for(auto& it:prefrenceVector){
+        if(it.category==cat) {
+            it.count+=20;
+        }
+    }
+}
+
 Article Users::getArticle() {
     if(!heapOfPrefrences.isEmpty()) {
         maxHeapNode n = heapOfPrefrences.extract_max();

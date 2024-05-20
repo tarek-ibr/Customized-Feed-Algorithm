@@ -90,7 +90,9 @@ public:
     void buildHeap(customVector<Article>& articles); //to be looked at
 
     void likeArticle(string);
-    void notInterested(string);  //lw fe wa2t
+    void notInterested(string);
+    void removeLikeArticle(string);
+    void removeNotInterested(string);
     // to add mark as read
 
     Article getArticle();
