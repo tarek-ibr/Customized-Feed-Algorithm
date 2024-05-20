@@ -10,6 +10,7 @@ userform::userform(QWidget *parent,  Users& u)
     ui->setupUi(this);
 
     this->user=u;
+    setFixedSize(width(), height());
     userArticles = Article::getArticles();
     user.loadSeenVector();
     user.loadPrefrenceVector();
