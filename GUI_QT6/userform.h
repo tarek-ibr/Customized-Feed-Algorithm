@@ -4,8 +4,7 @@
 #include <QDialog>
 #include "Accounts.h"
 #include "Article.h"
-#include <QMediaPlayer>
-#include <qvideowidget.h>
+
 
 namespace Ui {
 class userform;
