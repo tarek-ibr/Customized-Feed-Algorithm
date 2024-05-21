@@ -17,7 +17,6 @@ FetchContent_MakeAvailable(json)  # Make the dependency available
 add_executable(
         Customized_News_Feed_Algorithm  # Executable name
         main.cpp  # Source files
-        BinarySearchTree.h
         MaxHeap.h
         Date.h
         Date.cpp
@@ -27,7 +26,6 @@ add_executable(
         Admins.cpp
         MaxHeap.cpp
         Article.cpp
-        BinarySearchTree.cpp
         customVector.h
         customSingleLinkedList.h
         functionalities.h
