@@ -87,7 +87,7 @@ public:
 
     static customVector<Article> filterByCategory(string cat);
     static customVector<Article> filterByType(string typ);
-    static customVector<Article> filterByType(customVector<Article>);
+    static customVector<Article> filterByType(customVector<Article>, string);
 
     void buildHeap(customVector<Article>& articles); //to be looked at
 

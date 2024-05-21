@@ -144,7 +144,7 @@ customVector<Article> Users::filterByType(string typ){
 
 }
 
-customVector<Article> Users::filterByType(customVector<Article> a){
+customVector<Article> Users::filterByType(customVector<Article> a, string typ){
     customVector<Article> filtered;
     customVector<Article> articles = a;
     for (size_t i = 0; i < articles.size(); ++i) {
