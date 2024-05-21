@@ -29,10 +29,7 @@ Admins Admins::findByUsername(string username){
     return Admins();
 }
 
-void Admins::addArticle(Article a) {
-    customVector<Article>& articles = Article::getArticles();
-    articles.push(a);
-}
+
 
 bool Admins::registerNewUser(string u, string p){
     customVector<Users>& users= Users::getUsers();

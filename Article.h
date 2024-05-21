@@ -30,7 +30,7 @@ private:
 
 public:
     Article();
-    Article(const string& , const string& , const string& , const string& , const string& , Date, const string& );
+    Article( string ,  string ,  string ,  string ,  string , Date,string );
 
 
     string getTitle() const;

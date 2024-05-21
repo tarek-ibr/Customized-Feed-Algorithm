@@ -23,3 +23,18 @@ string Accounts::getusername() {
 string Accounts::getpassword() {
     return password;
 }
+
+void Accounts::addArticle(Article a) {
+    customVector<Article>& articles = Article::getArticles();
+    articles.push(a);
+}
+
+void Accounts::addVideo(string title, string category, string source, string author){
+    customVector<Article>& articles = Article::getArticles();
+    int num=1;
+    for(auto& it: articles){
+        if (it.getType()=="video")
+            num++;
+    }
+    articles.push(Article(title, to_string(num), category, source, author, Date::getCrrentDate(), "video"));
+}

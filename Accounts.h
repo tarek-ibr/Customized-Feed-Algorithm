@@ -28,7 +28,8 @@ public:
     string getusername();
     string getpassword();
 
-
+    void addArticle(Article);
+    void addVideo(string, string, string, string);
 
 };
 
@@ -43,7 +44,7 @@ public:
 
     static Admins findByUsername(string);
 
-    void addArticle(Article);
+
     static bool registerNewUser(string, string);
     bool removeUser(string);
 

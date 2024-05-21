@@ -7,7 +7,7 @@
 customVector<Article> Article::articles=customVector<Article>();
 
 Article::Article(): title(""), content(""), category(""), source(""), author(""), publicationDate(0,0,0), type("article") {}
-Article::Article(const string& title, const string& content, const string& category, const string& source, const string& author, Date publicationDate,const string& t): title(title), content(content), category(category), source(source), author(author), publicationDate(publicationDate), type(t) {}
+Article::Article( string title,  string content,  string category,  string source,  string author, Date publicationDate,string t): title(title), content(content), category(category), source(source), author(author), publicationDate(publicationDate), type(t) {}
 
 string Article::getTitle() const { return title; }
 string Article::getContent() const { return content; }
