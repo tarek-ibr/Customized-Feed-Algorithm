@@ -144,6 +144,17 @@ customVector<Article> Users::filterByType(string typ){
 
 }
 
+customVector<Article> Users::filterByType(customVector<Article> a){
+    customVector<Article> filtered;
+    customVector<Article> articles = a;
+    for (size_t i = 0; i < articles.size(); ++i) {
+        if (articles[i].getType() == typ) {
+            filtered.push(articles[i]);
+        }
+    }
+    return filtered;
+}
+
 void Users::buildHeap(customVector<Article>& articles){
     heapOfPrefrences.clear();
     bool flag =false;
