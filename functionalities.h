@@ -22,6 +22,6 @@ string login(string, string);
 void implementAdminChoice(Admins&, int);
 void implementUserChoice(Users&, int, Article&);
 
-void displayNewsFeed(Users& user);
+
 
 #endif //CUSTOMIZED_NEWS_FEED_ALGORITHM_FUNCTIONALITIES_H

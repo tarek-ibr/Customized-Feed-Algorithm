@@ -24,12 +24,13 @@ private:
     string source;
     string author;
     Date publicationDate;
+    string type;
 
     static customVector<Article> articles;
 
 public:
     Article();
-    Article(const string& , const string& , const string& , const string& , const string& , Date );
+    Article(const string& , const string& , const string& , const string& , const string& , Date, const string& );
 
 
     string getTitle() const;
@@ -38,6 +39,7 @@ public:
     string getSource() const;
     string getAuthor() const;
     Date getPublicationDate() const;
+    string getType() const;
     static customVector<Article>& getArticles();
 
     void setTitle(const string& title);
@@ -45,6 +47,7 @@ public:
     void setCategory(const string& category);
     void setSource(const string& source);
     void setAuthor(const string& author);
+    void setType(const string& type);
     void setPublicationDate(const Date& publicationDate);
 
 

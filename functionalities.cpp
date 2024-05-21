@@ -85,7 +85,7 @@ void implementAdminChoice(Admins& admin, int choice){
             getline(cin, dateStr);
             Date date(dateStr);
 
-            Article newArticle(title, content, category, source, author, date);
+            Article newArticle(title, content, category, source, author, date, "article");
             admin.addArticle(newArticle);
             break;
         }
@@ -114,18 +114,3 @@ void implementUserChoice(Users& user, int choice, Article& currentArticle){
 
     }
 }
-
-
-void displayNewsFeed(Users& user) {
-    customVector<Article> filteredArticles = user.filterByCategory(user.getPrefrence());
-
-    for (const Article& article: filteredArticles) {
-        cout << "Title: " << article.getTitle() << endl;
-        cout << "Content: " << article.getContent() << endl;
-        cout << "Source: " << article.getSource() << endl;
-        cout << "Author: " << article.getAuthor() << endl;
-        cout << "Publication Date: " << article.getPublicationDate().getDate() << endl;
-        cout << endl;
-    }
-}
-

@@ -6,8 +6,8 @@
 
 customVector<Article> Article::articles=customVector<Article>();
 
-Article::Article(): title(""), content(""), category(""), source(""), author(""), publicationDate(0,0,0) {}
-Article::Article(const string& title, const string& content, const string& category, const string& source, const string& author, Date publicationDate): title(title), content(content), category(category), source(source), author(author), publicationDate(publicationDate) {}
+Article::Article(): title(""), content(""), category(""), source(""), author(""), publicationDate(0,0,0), type("article") {}
+Article::Article(const string& title, const string& content, const string& category, const string& source, const string& author, Date publicationDate,const string& t): title(title), content(content), category(category), source(source), author(author), publicationDate(publicationDate), type(t) {}
 
 string Article::getTitle() const { return title; }
 string Article::getContent() const { return content; }
@@ -15,6 +15,7 @@ string Article::getCategory() const { return category; }
 string Article::getSource() const { return source; }
 string Article::getAuthor() const { return author; }
 Date Article::getPublicationDate() const { return publicationDate; }
+string Article::getType() const{ return type; };
 customVector<Article>& Article::getArticles(){return articles;}
 
 void Article::setTitle(const string& t) { this->title = t; }
@@ -22,6 +23,7 @@ void Article::setContent(const string& co) { this->content = co; }
 void Article::setCategory(const string& ca) { this->category = ca; }
 void Article::setSource(const string& s) { this->source = s; }
 void Article::setAuthor(const string& a) { this->author = a; }
+void Article::setType(const string& type) {this->type = type; }
 void Article::setPublicationDate(const Date& p) { this->publicationDate = p; }
 
 bool Article::saveArticles() {
@@ -44,6 +46,7 @@ bool Article::saveArticles() {
         jsonObj["source"] = articles[i].source;
         jsonObj["author"] = articles[i].author;
         jsonObj["publicationDate"] = articles[i].publicationDate.getDate();
+        jsonObj["type"] = articles[i].type;
         output.push_back(jsonObj);  // Append the new article to the JSON array
     }
 
@@ -73,8 +76,9 @@ bool Article::loadArticles() {
         string source = jsonObj["source"];
         string author = jsonObj["author"];
         string publicationDate = jsonObj["publicationDate"];
+        string type = jsonObj["type"];
 
-        articles.push(Article(title, content, category, source, author, publicationDate));
+        articles.push(Article(title, content, category, source, author, publicationDate, type));
     }
     file.close();
 

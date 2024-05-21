@@ -85,7 +85,8 @@ public:
     void saveSeenVector();
 
 
-    customVector<Article> filterByCategory(const string& cat);
+    static customVector<Article> filterByCategory(string cat);
+    static customVector<Article> filterByType(string typ);
 
     void buildHeap(customVector<Article>& articles); //to be looked at
 

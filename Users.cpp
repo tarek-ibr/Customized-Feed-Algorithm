@@ -121,7 +121,7 @@ void Users::saveSeenVector(){
     }
 }
 
-customVector<Article> Users::filterByCategory(const string& cat){
+customVector<Article> Users::filterByCategory(string cat){
     customVector<Article> filtered;
     customVector<Article> articles = Article::getArticles();
     for (size_t i = 0; i < articles.size(); ++i) {
@@ -130,6 +130,18 @@ customVector<Article> Users::filterByCategory(const string& cat){
         }
     }
     return filtered;
+}
+
+customVector<Article> Users::filterByType(string typ){
+    customVector<Article> filtered;
+    customVector<Article> articles = Article::getArticles();
+    for (size_t i = 0; i < articles.size(); ++i) {
+        if (articles[i].getType() == typ) {
+            filtered.push(articles[i]);
+        }
+    }
+    return filtered;
+
 }
 
 void Users::buildHeap(customVector<Article>& articles){

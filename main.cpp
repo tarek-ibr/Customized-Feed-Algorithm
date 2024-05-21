@@ -79,6 +79,8 @@ int main() {
 
     // If the user is a member
     if(type=="user"){
+        customVector<Article> article = Users::filterByType("article");
+
         // Find the member by ID
         customVector<Users>& users = Users::getUsers();
         Users& user=users[Users::findByUsername(username)];
@@ -86,7 +88,7 @@ int main() {
 
         user.loadPrefrenceVector();
         user.loadSeenVector();
-        user.buildHeap(Article::getArticles());
+        user.buildHeap(article);
 
         Article currentArticle = user.getArticle();
 
@@ -99,7 +101,7 @@ int main() {
             // Welcome the member
             cout<<endl <<"\t\t\t\t\t\t\tWelcome " <<user.getusername() <<" to our newspaper " <<endl;
             if (currentArticle ==Article()){
-                cout<<"you have finished all the articles";
+                cout<<"you have finished all the articles\n";
                 break;
             }
             currentArticle.displayArticle();
@@ -122,7 +124,7 @@ int main() {
                 implementUserChoice(user, userOption, currentArticle);
                 user.savePrefrenceVector();
                 user.saveSeenVector();
-                user.buildHeap(Article::getArticles());
+                user.buildHeap(article);
                 flag=1;
                 goto Member_Choose_Option;
             }
@@ -130,7 +132,7 @@ int main() {
                 implementUserChoice(user, userOption, currentArticle);
                 user.savePrefrenceVector();
                 user.saveSeenVector();
-                user.buildHeap(Article::getArticles());
+                user.buildHeap(article);
                 implementUserChoice(user, 3, currentArticle);
                 user.saveSeenVector();
             }
