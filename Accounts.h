@@ -29,7 +29,7 @@ public:
     string getpassword();
 
     void addArticle(Article);
-    void addVideo(string, string, string, string);
+    int addVideo(string, string, string, string);
 
 };
 

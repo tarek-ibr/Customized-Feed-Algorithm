@@ -29,7 +29,7 @@ void Accounts::addArticle(Article a) {
     articles.push(a);
 }
 
-void Accounts::addVideo(string title, string category, string source, string author){
+int Accounts::addVideo(string title, string category, string source, string author){
     customVector<Article>& articles = Article::getArticles();
     int num=1;
     for(auto& it: articles){
@@ -37,4 +37,5 @@ void Accounts::addVideo(string title, string category, string source, string aut
             num++;
     }
     articles.push(Article(title, to_string(num), category, source, author, Date::getCrrentDate(), "video"));
+    return num;
 }
