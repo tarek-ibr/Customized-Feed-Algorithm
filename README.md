@@ -1,5 +1,5 @@
-*	User’s manual:
-*	Function description: -
+#	User’s manual:
+#	Function description: -
 1)	Login: Users can log in to the system by entering their username and password.
 2)	Registration: Admins and users can register new user accounts by providing a username and password.
 3)	Article Management: Admins and users can add new articles to the system, specifying details like title, content, category, source, author, and publication date.
@@ -9,7 +9,7 @@
 
 
 
-*	User manual: -
+#	User manual: -
 1)	Login/Registration:
 o	Upon launching the application, users are prompted to log in with their username and password. If they do not have an account, admins can register new users.
 2)	Article and users Management:
@@ -22,10 +22,10 @@ o	Users can view articles filtered by their preferences, category, author, or so
 o	Users and admins can log out of the system or exit the application when done.
 
 
-*	How to run:
+#	How to run:
 There are two interfaces to this application
 
-*	Consol:
+#	Consol:
 •	And this doesn’t contain all the features and we can run it using only the main and the classes and functionalities.
 *	GUI:
 •	In GUI we used Qt Creator 6.7.0 and while setting it up chose desktop development.
