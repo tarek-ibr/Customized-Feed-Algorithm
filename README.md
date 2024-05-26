@@ -27,7 +27,7 @@ There are two interfaces to this application
 
 #	Consol:
 •	And this doesn’t contain all the features and we can run it using only the main and the classes and functionalities.
-*	GUI:
+#	GUI:
 •	In GUI we used Qt Creator 6.7.0 and while setting it up chose desktop development.
 •	Open a new project and put all the classes (Accounts, Article, customVector, MaxHeap) in the project (don’t put the main and functionalities) 
 •	Put all the files in the GUI_QT6 in the project (don’t take the CMakeLists)
