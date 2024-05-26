@@ -73,9 +73,7 @@ And
 
 find_package(Qt6 COMPONENTS Core Gui Widgets Multimedia MultimediaWidgets TextToSpeech REQUIRED)
 
-# Add the executable
 
-# Include the directories for Qt
 include_directories(${Qt6Core_INCLUDE_DIRS} ${Qt6Gui_INCLUDE_DIRS} ${Qt6Widgets_INCLUDE_DIRS} ${Qt6Multimedia_INCLUDE_DIRS} ${Qt6MultimediaWidgets_INCLUDE_DIRS})
 
 target_link_libraries(“YOUR PROJECT NAME” PRIVATE Qt${QT_VERSION_MAJOR}::Widgets Qt${QT_VERSION_MAJOR}::MultimediaWidgets Qt${QT_VERSION_MAJOR}::TextToSpeech)
