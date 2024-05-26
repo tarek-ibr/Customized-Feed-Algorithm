@@ -17,7 +17,7 @@ set(PROJECT_SOURCES
         mainwindow.cpp
         mainwindow.h
         mainwindow.ui
-	json.h
+	    json.h
         Accounts.cpp
         Accounts.h
         Users.cpp
@@ -35,9 +35,9 @@ set(PROJECT_SOURCES
         userform.h
         userform.cpp
         userform.ui
-	post.ui
-	post.h
-	post.cpp
+	    post.ui
+	    post.h
+	    post.cpp
 )
 
 if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)

@@ -53,7 +53,6 @@ public:
 
     void displayArticle();
     Article search(Article);
-    //vector<Article> filterBySource(const vector<Article>& articles, const string& source);   //to be removed
 
     bool operator ==(Article);
     bool operator !=(Article);

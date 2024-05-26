@@ -103,16 +103,6 @@ Article Article::search(Article a) {
     throw runtime_error("Article not found");
 }
 
-/*vector<Article> Article::filterBySource(const vector<Article>& articles, const string& source) {
-    vector<Article> filtered;
-    for (const auto& article : articles) {
-        if (article.source == source) {
-            filtered.push_back(article);
-        }
-    }
-    return filtered;
-}*/
-
 bool Article::operator ==(Article other){
     if(this->getTitle() == other.getTitle()&&this->getAuthor() == other.getAuthor()&&this->getCategory() == other.getCategory()&&this->getContent() == other.getContent()&&this->getPublicationDate() == other.getPublicationDate()&&this->getSource() == other.getSource())
         return true;

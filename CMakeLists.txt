@@ -27,7 +27,6 @@ add_executable(
         MaxHeap.cpp
         Article.cpp
         customVector.h
-        customSingleLinkedList.h
         functionalities.h
         functionalities.cpp
         json.h
