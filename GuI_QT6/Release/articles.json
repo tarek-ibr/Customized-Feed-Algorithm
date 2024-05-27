@@ -316,11 +316,20 @@
     },
     {
         "author": "salah",
-        "category": "Technology",
+        "category": "Education",
         "content": "16",
-        "publicationDate": "25/05/2024",
+        "publicationDate": "26/05/2024",
         "source": "tiktok",
         "title": "data structure",
         "type": "video"
+    },
+    {
+        "author": "test",
+        "category": "Entertainment",
+        "content": "test",
+        "publicationDate": "26/05/2024",
+        "source": "test",
+        "title": "test",
+        "type": "article"
     }
 ]

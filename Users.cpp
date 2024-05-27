@@ -275,7 +275,7 @@ void Users::removeLikeArticle(string cat){
 void Users::removeNotInterested(string cat){
     for(auto& it:prefrenceVector){
         if(it.category==cat) {
-            it.count+=10;
+            it.count+=17;
         }
     }
 }
