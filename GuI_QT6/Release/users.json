@@ -2,7 +2,7 @@
     {
         "password": "01234",
         "prefrence": "Technology,10/Finance,8/Sports,1/Health,1/",
-        "seen": "placeholder/8/test/",
+        "seen": "placeholder",
         "username": "ammar"
     },
     {
@@ -16,11 +16,5 @@
         "prefrence": "Sports,20/",
         "seen": "placeholder",
         "username": "hussein"
-    },
-    {
-        "password": "eui",
-        "prefrence": "",
-        "seen": "16/",
-        "username": "eui"
     }
 ]
